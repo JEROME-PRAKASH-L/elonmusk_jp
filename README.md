@@ -1,0 +1,75 @@
+# Jerome Prakash L — Terminal Portfolio
+
+A single-page developer portfolio styled as a **terminal / file-system OS**.
+Built from my résumé. Pure HTML + CSS + JavaScript — **no build step, no dependencies**,
+so it drops straight onto GitHub Pages, Netlify, Vercel, or any static host.
+
+```
+~/jerome
+ > whoami        about + focus areas
+ > experience    timeline
+ > projects      AI Daily Inbox Recap · OpenClaw
+ > skills        skills.json
+ > education      DMI College of Engineering
+ > certs         certifications
+ > writing       LinkedIn / building in public
+ > contact       email · phone · linkedin
+```
+
+## Files
+
+| File | Purpose |
+|------|---------|
+| `index.html` | Markup + all content |
+| `styles.css` | Theme, layout, responsive, terminal aesthetic |
+| `script.js`  | Active-nav, theme toggle, typed name, interactive console |
+| `Jerome_Prakash_L_Resume.pdf` | Linked from the sidebar (`↓ resume.pdf`) |
+
+## Features
+
+- **Click *or* type to navigate.** Sidebar links work with zero typing; the
+  command line (`help`, `ls`, `open projects`, `skills`, `resume`, `theme`, …)
+  is an optional delight layer.
+- **Two themes** — phosphor green (default) and amber — toggle in the title bar,
+  remembered via `localStorage`.
+- **Accessible & responsive** — semantic landmarks, keyboard focus rings, a skip
+  link, AA-contrast colors, and honors `prefers-reduced-motion` / `prefers-contrast`.
+  Collapses to a top nav bar on phones.
+- **Progressive enhancement** — every section is in the HTML and reachable by
+  scroll/click even if JavaScript never loads.
+
+## Run locally
+
+Just open `index.html` in a browser. For the résumé link and fonts to behave
+exactly like production, serve it:
+
+```bash
+# any one of these
+python -m http.server 8000
+npx serve .
+```
+
+Then visit <http://localhost:8000>.
+
+## Deploy to GitHub Pages
+
+1. Push these files to a repo (e.g. `jerome-portfolio`). If your local branch is
+   `master` and you prefer `main`, rename it first: `git branch -M main`.
+2. **Settings → Pages → Branch: your default branch (`main` or `master`) / root → Save.**
+3. Your site goes live at `https://<your-username>.github.io/jerome-portfolio/`.
+
+## Customize
+
+- **Content** lives in `index.html` — edit the text directly.
+- **Colors / fonts** are CSS variables at the top of `styles.css` (`:root`).
+- **GitHub link:** there's a commented-out `github` row in the `#contact`
+  section of `index.html` — drop in your profile URL and uncomment it.
+- **Project links:** each project card has a commented `project__links` row —
+  add your repo / live-demo URLs and uncomment to show `code →` / `demo →`.
+- **Social preview:** export `og-image.svg` to `og-image.png` (1200×630), then
+  uncomment the `og:image` tags in `index.html`'s `<head>`.
+- **Console commands** are in the `consoleApp()` function in `script.js`.
+
+---
+
+Built as a terminal — `view-source` welcome.

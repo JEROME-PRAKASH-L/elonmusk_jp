@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="green">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jerome Prakash L — AI Agents · Automation · Computer Vision</title>
+  <meta name="description" content="Portfolio of Jerome Prakash L — CSE student building AI agents, automation tools, and computer-vision experiments in Python. Open to SWE/AI internships." />
+  <meta name="author" content="Jerome Prakash L" />
+  <meta name="theme-color" content="#04070a" />
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Jerome Prakash L — Terminal Portfolio" />
+  <meta property="og:description" content="CSE student building AI agents & automation tools. Python · AI Agents · Automation · Computer Vision." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <!-- Social thumbnail: export og-image.svg → og-image.png (1200×630), then uncomment:
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" /> -->
+
+  <!-- Inline SVG favicon: terminal prompt -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b1110'/%3E%3Cpath d='M7 10l6 6-6 6' fill='none' stroke='%235ef2a0' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='16' y1='22' x2='25' y2='22' stroke='%235ef2a0' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E" />
+
+  <!-- Fonts: monospace for UI, serif italic for display names (graceful fallback if offline) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Spectral:ital,wght@1,500;1,600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <div class="screen">
+    <div class="terminal">
+
+      <!-- ===== Title bar ===== -->
+      <div class="titlebar">
+        <div class="lights" aria-hidden="true">
+          <span class="light light--red"></span>
+          <span class="light light--amber"></span>
+          <span class="light light--green"></span>
+        </div>
+        <div class="titlebar__title">jerome@portfolio — bash</div>
+        <div class="titlebar__controls">
+          <button id="theme-toggle" class="ghost-btn" type="button" aria-label="Switch colour theme" title="Switch theme (green / amber)">
+            <span class="theme-dot" aria-hidden="true"></span><span class="theme-name">green</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== Window body: sidebar + content ===== -->
+      <div class="window-body">
+
+        <!-- Sidebar navigation -->
+        <aside class="sidebar" aria-label="Site sections">
+          <div class="sidebar__path">~/jerome</div>
+          <nav class="sidebar__nav">
+            <a class="nav-link is-active" href="#whoami" data-cmd="whoami"><span class="nav-prompt">&gt;</span> $ whoami</a>
+            <a class="nav-link" href="#experience" data-cmd="experience"><span class="nav-prompt">&gt;</span> experience</a>
+            <a class="nav-link" href="#projects" data-cmd="projects"><span class="nav-prompt">&gt;</span> projects</a>
+            <a class="nav-link" href="#skills" data-cmd="skills"><span class="nav-prompt">&gt;</span> skills</a>
+            <a class="nav-link" href="#education" data-cmd="education"><span class="nav-prompt">&gt;</span> education</a>
+            <a class="nav-link" href="#certs" data-cmd="certs"><span class="nav-prompt">&gt;</span> certs</a>
+            <a class="nav-link" href="#writing" data-cmd="writing"><span class="nav-prompt">&gt;</span> writing</a>
+            <a class="nav-link" href="#contact" data-cmd="contact"><span class="nav-prompt">&gt;</span> contact</a>
+          </nav>
+          <div class="sidebar__foot">
+            <a class="sidebar__resume" href="Jerome_Prakash_L_Resume.pdf" target="_blank" rel="noopener">&#8595; resume.pdf</a>
+            <div class="sidebar__version">v2026.1.0</div>
+          </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="content" id="content">
+
+          <!-- ===== whoami ===== -->
+          <section class="section" id="whoami" aria-labelledby="typed-name">
+            <p class="cmd" id="whoami-cmd"><span class="cmd__prompt">&gt;</span> whoami</p>
+            <div class="whoami">
+              <div class="avatar">
+                <img class="avatar__photo" src="assets/jerome-profile.jpg" alt="Portrait of Jerome Prakash L" width="900" height="675" decoding="async" fetchpriority="high" />
+              </div>
+              <div class="whoami__body">
+                <h1 class="display-name" id="typed-name" aria-label="Jerome Prakash L">Jerome Prakash L<span class="cursor" aria-hidden="true"></span></h1>
+                <p class="whoami__role">Computer Science Engineering Student<span class="dot-sep">·</span>Open to SWE / AI Internships</p>
+                <div class="badges" role="list" aria-label="Focus areas">
+                  <span class="badge" role="listitem">Python</span>
+                  <span class="badge badge--alt" role="listitem">AI Agents</span>
+                  <span class="badge" role="listitem">Automation</span>
+                  <span class="badge badge--alt" role="listitem">Computer Vision</span>
+                  <span class="badge" role="listitem">Linux</span>
+                </div>
+                <p class="whoami__bio">
+                  I build AI-agent and automation tools that turn repetitive manual work into
+                  reliable, hands-off workflows — across Gmail, Google Calendar, Telegram, and
+                  local developer environments — plus real-time computer-vision experiments
+                  (hand &amp; gesture detection). Currently seeking a software-engineering or AI internship.
+                </p>
+                <div class="whoami__actions">
+                  <a class="btn btn--solid" href="#projects" data-cmd="projects" aria-label="View projects">ls ./projects</a>
+                  <a class="btn" href="#contact" data-cmd="contact" aria-label="Contact me">./contact.sh</a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ===== experience ===== -->
+          <section class="section" id="experience" aria-labelledby="experience-cmd">
+            <h2 class="cmd" id="experience-cmd"><span class="cmd__prompt">&gt;</span> ls ./experience</h2>
+            <ol class="timeline">
+              <li class="timeline__item">
+                <div class="timeline__when">2025 — now</div>
+                <div class="timeline__what">
+                  <h3 class="timeline__role">Personal Brand &amp; Content Strategy <span class="muted">(Technology)</span></h3>
+                  <p class="timeline__org">Self-directed · LinkedIn</p>
+                  <ul class="bullets">
+                    <li>Grew a technology-focused LinkedIn presence around AI, automation, and innovation to <strong>1,000+ followers</strong>.</li>
+                    <li>Published project breakdowns and written content that translate technical builds into clear, audience-friendly stories.</li>
+                  </ul>
+                </div>
+              </li>
+            </ol>
+            <p class="note"># Building in public — most of my work lives in the <a href="#projects" data-cmd="projects">projects/</a> directory.</p>
+          </section>
+
+          <!-- ===== projects ===== -->
+          <section class="section" id="projects" aria-labelledby="projects-cmd">
+            <h2 class="cmd" id="projects-cmd"><span class="cmd__prompt">&gt;</span> ls ./projects</h2>
+            <div class="projects">
+
+              <article class="project">
+                <header class="project__head">
+                  <h3 class="project__title">AI Daily Inbox Recap</h3>
+                  <span class="project__type">automation</span>
+                </header>
+                <p class="project__desc">
+                  An AI-powered automation that aggregates the last 24 hours of Gmail activity and
+                  pulls in relevant calendar context — surfacing what matters each morning. It extracts
+                  and prioritizes action items, then delivers a clean summary email, cutting daily manual inbox triage.
+                </p>
+                <ul class="project__points">
+                  <li>End-to-end productivity pipeline with AI agents &amp; connectors</li>
+                  <li>Prompt engineering over Gmail + Google Calendar APIs</li>
+                </ul>
+                <div class="tags" aria-label="Tech stack">
+                  <span class="tag">Python</span>
+                  <span class="tag">Gmail API</span>
+                  <span class="tag">Google Calendar</span>
+                  <span class="tag">AI Agents</span>
+                </div>
+                <!-- TODO Jerome: add real links, then uncomment this row:
+                <div class="project__links">
+                  <a class="proj-link" href="REPO_URL" target="_blank" rel="noopener">code →</a>
+                  <a class="proj-link" href="DEMO_URL" target="_blank" rel="noopener">demo →</a>
+                </div> -->
+              </article>
+
+              <article class="project">
+                <header class="project__head">
+                  <h3 class="project__title">OpenClaw</h3>
+                  <span class="project__type">AI coding agent</span>
+                </header>
+                <p class="project__desc">
+                  A Telegram-based AI coding agent running on WSL2, using Telegram as a natural-language
+                  instruction interface. It receives coding requests over chat and generates project files
+                  directly on the local machine — validated end-to-end by building a functional login page
+                  from a single chat instruction.
+                </p>
+                <ul class="project__points">
+                  <li>Natural-language → working code, fully local</li>
+                  <li>WSL2 dev environment + Telegram bot orchestration</li>
+                </ul>
+                <div class="tags" aria-label="Tech stack">
+                  <span class="tag">WSL2</span>
+                  <span class="tag">Telegram Bot</span>
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">HTML/CSS</span>
+                </div>
+                <!-- TODO Jerome: add real links, then uncomment this row:
+                <div class="project__links">
+                  <a class="proj-link" href="REPO_URL" target="_blank" rel="noopener">code →</a>
+                  <a class="proj-link" href="DEMO_URL" target="_blank" rel="noopener">demo →</a>
+                </div> -->
+              </article>
+
+            </div>
+          </section>
+
+          <!-- ===== skills ===== -->
+          <section class="section" id="skills" aria-labelledby="skills-cmd">
+            <h2 class="cmd" id="skills-cmd"><span class="cmd__prompt">&gt;</span> cat ./skills.json</h2>
+            <pre class="json" aria-label="Skills as JSON"><code><span class="p">{</span>
+  <span class="k">"languages"</span><span class="p">:</span> <span class="p">[</span><span class="s">"Python"</span><span class="p">,</span> <span class="s">"JavaScript"</span><span class="p">,</span> <span class="s">"HTML"</span><span class="p">,</span> <span class="s">"CSS"</span><span class="p">]</span><span class="p">,</span>
+  <span class="k">"ai_automation"</span><span class="p">:</span> <span class="p">[</span><span class="s">"AI Agents"</span><span class="p">,</span> <span class="s">"Prompt Engineering"</span><span class="p">,</span> <span class="s">"Workflow Automation"</span><span class="p">,</span> <span class="s">"RAG"</span><span class="p">]</span><span class="p">,</span>
+  <span class="k">"tools"</span><span class="p">:</span> <span class="p">[</span><span class="s">"Git"</span><span class="p">,</span> <span class="s">"GitHub"</span><span class="p">,</span> <span class="s">"WSL2 / Linux"</span><span class="p">,</span> <span class="s">"REST APIs"</span><span class="p">,</span> <span class="s">"Telegram Bots"</span><span class="p">]</span><span class="p">,</span>
+  <span class="k">"computer_vision"</span><span class="p">:</span> <span class="p">[</span><span class="s">"Hand &amp; Gesture Detection"</span><span class="p">,</span> <span class="s">"Real-time HCI"</span><span class="p">]</span><span class="p">,</span>
+  <span class="k">"communication"</span><span class="p">:</span> <span class="p">[</span><span class="s">"Technical Writing"</span><span class="p">,</span> <span class="s">"Documentation"</span><span class="p">,</span> <span class="s">"Content Strategy"</span><span class="p">]</span>
+<span class="p">}</span></code></pre>
+          </section>
+
+          <!-- ===== education ===== -->
+          <section class="section" id="education" aria-labelledby="education-cmd">
+            <h2 class="cmd" id="education-cmd"><span class="cmd__prompt">&gt;</span> ls ./education</h2>
+            <ol class="timeline">
+              <li class="timeline__item">
+                <div class="timeline__when">2024 — 2028</div>
+                <div class="timeline__what">
+                  <h3 class="timeline__role">B.E. Computer Science Engineering</h3>
+                  <p class="timeline__org">DMI College of Engineering · Chennai, India <span class="muted">(expected Aug 2028)</span></p>
+                  <ul class="bullets">
+                    <li>Relevant coursework: Data Structures, Algorithms, Web Development, User Experience Design, Digital Systems.</li>
+                  </ul>
+                </div>
+              </li>
+              <li class="timeline__item">
+                <div class="timeline__when">— 2024</div>
+                <div class="timeline__what">
+                  <h3 class="timeline__role">Higher Secondary (11th &amp; 12th)</h3>
+                  <p class="timeline__org">Adaikala Annai Higher Secondary School · Biology–Mathematics stream</p>
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <!-- ===== certifications ===== -->
+          <section class="section" id="certs" aria-labelledby="certs-cmd">
+            <h2 class="cmd" id="certs-cmd"><span class="cmd__prompt">&gt;</span> cat ./certifications.log</h2>
+            <ul class="certs">
+              <li class="cert"><span class="cert__bullet" aria-hidden="true">✓</span> 5-Day AI Agents Intensive Course with Google <span class="cert__by">Kaggle</span></li>
+              <li class="cert"><span class="cert__bullet" aria-hidden="true">✓</span> Agentic AI Day <span class="cert__by">Hack2skill</span></li>
+              <li class="cert"><span class="cert__bullet" aria-hidden="true">✓</span> AWS Educate: Machine Learning Foundations <span class="cert__by">Amazon Web Services</span></li>
+              <li class="cert"><span class="cert__bullet" aria-hidden="true">✓</span> Building RAG Apps Using MongoDB <span class="cert__by">MongoDB</span></li>
+              <li class="cert"><span class="cert__bullet" aria-hidden="true">✓</span> Software Engineering Job Simulation <span class="cert__by">J.P. Morgan · Forage</span></li>
+              <li class="cert"><span class="cert__bullet" aria-hidden="true">✓</span> Learn Git <span class="cert__by">Educative</span></li>
+              <li class="cert"><span class="cert__bullet" aria-hidden="true">✓</span> Prompt Engineering with ChatGPT</li>
+            </ul>
+          </section>
+
+          <!-- ===== writing ===== -->
+          <section class="section" id="writing" aria-labelledby="writing-cmd">
+            <h2 class="cmd" id="writing-cmd"><span class="cmd__prompt">&gt;</span> cat ./writing.md</h2>
+            <div class="writing">
+              <p class="writing__lead">
+                I write about AI, automation, and building in public — project breakdowns that translate
+                technical work into clear, audience-friendly stories.
+              </p>
+              <p class="writing__stat"><span class="writing__num">1,000+</span> followers and counting on LinkedIn.</p>
+              <a class="btn" href="https://www.linkedin.com/in/jerome-prakash-975a15326" target="_blank" rel="noopener">read on linkedin →</a>
+            </div>
+          </section>
+
+          <!-- ===== contact ===== -->
+          <section class="section" id="contact" aria-labelledby="contact-cmd">
+            <h2 class="cmd" id="contact-cmd"><span class="cmd__prompt">&gt;</span> cat ./contact.json</h2>
+            <ul class="contact">
+              <li class="contact__row">
+                <span class="contact__key">email</span>
+                <a class="contact__val" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=prakashjerome152@gmail.com&amp;su=Hi%20Jerome%2C%20saw%20your%20portfolio" target="_blank" rel="noopener">prakashjerome152@gmail.com</a>
+              </li>
+              <li class="contact__row">
+                <span class="contact__key">phone</span>
+                <a class="contact__val" href="tel:+917200552458">+91 72005 52458</a>
+              </li>
+              <li class="contact__row">
+                <span class="contact__key">linkedin</span>
+                <a class="contact__val" href="https://www.linkedin.com/in/jerome-prakash-975a15326" target="_blank" rel="noopener">in/jerome-prakash-975a15326</a>
+              </li>
+              <li class="contact__row">
+                <span class="contact__key">location</span>
+                <span class="contact__val">Chennai, Tamil Nadu, India</span>
+              </li>
+              <!-- TODO Jerome: add your GitHub profile URL below, then remove this comment.
+              <li class="contact__row">
+                <span class="contact__key">github</span>
+                <a class="contact__val" href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">github.com/YOUR-USERNAME</a>
+              </li>
+              -->
+            </ul>
+          </section>
+
+          <!-- ===== interactive console (progressive enhancement / delight layer) ===== -->
+          <section class="section console-section" id="console" aria-label="Interactive command line">
+            <p class="cmd"><span class="cmd__prompt">&gt;</span> # optional: type a command — try <code>help</code></p>
+            <div class="console" id="console-box">
+              <div class="console__log" id="console-log" aria-live="polite"></div>
+              <div class="console__inputline">
+                <label class="console__prompt" for="console-input">jerome@portfolio:~$</label>
+                <input
+                  id="console-input"
+                  class="console__input"
+                  type="text"
+                  autocomplete="off"
+                  autocapitalize="off"
+                  spellcheck="false"
+                  aria-label="Terminal command input"
+                  placeholder="help" />
+              </div>
+            </div>
+          </section>
+
+        </main>
+      </div>
+
+      <footer class="footer">
+        <span>© <span id="year">2026</span> Jerome Prakash L</span>
+        <span class="footer__sep">·</span>
+        <span>built as a terminal — <code>view-source</code> welcome</span>
+      </footer>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

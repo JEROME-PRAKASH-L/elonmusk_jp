@@ -53,10 +53,16 @@ Then visit <http://localhost:8000>.
 
 ## Deploy to GitHub Pages
 
-1. Push these files to a repo (e.g. `jerome-portfolio`). If your local branch is
-   `master` and you prefer `main`, rename it first: `git branch -M main`.
-2. **Settings → Pages → Branch: your default branch (`main` or `master`) / root → Save.**
-3. Your site goes live at `https://<your-username>.github.io/jerome-portfolio/`.
+This repo ships a GitHub Actions workflow (`.github/workflows/deploy.yml`) that
+publishes the site automatically on every push to `main` — no build step.
+
+1. Push these files to a repo (e.g. `jerome-portfolio`).
+2. **Settings → Pages → Build and deployment → Source: GitHub Actions.**
+3. Push to `main` (or run the workflow manually from the **Actions** tab). The
+   site goes live at `https://<your-username>.github.io/<repo>/`.
+
+A `.nojekyll` file is included so GitHub serves every asset as-is (no Jekyll
+processing).
 
 ## Customize
 

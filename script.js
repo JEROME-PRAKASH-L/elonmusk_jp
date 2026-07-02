@@ -143,6 +143,7 @@
     if (!input || !log) return;
 
     var LINKEDIN = "https://www.linkedin.com/in/jerome-prakash-975a15326";
+    var GITHUB = "https://github.com/jerome-prakash-l";
     var GMAIL_COMPOSE = "https://mail.google.com/mail/?view=cm&fs=1&to=prakashjerome152@gmail.com&su=Hi%20Jerome%2C%20saw%20your%20portfolio";
     var history = [];
     var histIndex = -1;
@@ -198,6 +199,7 @@
       "  resume          open résumé (PDF)",
       "  email           email Jerome (opens Gmail)",
       "  linkedin        open LinkedIn profile",
+      "  github          open GitHub profile",
       "  theme           toggle green / amber",
       "  clear           clear this console"
     ].join("\n");
@@ -270,6 +272,12 @@
         case "in":
           outHTML('opening LinkedIn… <a href="' + LINKEDIN + '" target="_blank" rel="noopener">' + LINKEDIN + '</a>');
           window.open(LINKEDIN, "_blank", "noopener");
+          break;
+
+        case "github":
+        case "gh":
+          outHTML('opening GitHub… <a href="' + GITHUB + '" target="_blank" rel="noopener">' + GITHUB + '</a>');
+          window.open(GITHUB, "_blank", "noopener");
           break;
 
         case "contact":

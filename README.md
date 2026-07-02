@@ -68,12 +68,12 @@ processing).
 
 - **Content** lives in `index.html` — edit the text directly.
 - **Colors / fonts** are CSS variables at the top of `styles.css` (`:root`).
-- **GitHub link:** there's a commented-out `github` row in the `#contact`
-  section of `index.html` — drop in your profile URL and uncomment it.
 - **Project links:** each project card has a commented `project__links` row —
   add your repo / live-demo URLs and uncomment to show `code →` / `demo →`.
-- **Social preview:** export `og-image.svg` to `og-image.png` (1200×630), then
-  uncomment the `og:image` tags in `index.html`'s `<head>`.
+- **Social preview:** `og-image.png` (1200×630) is exported from `og-image.svg`
+  and wired up in `index.html`'s `<head>`. If you edit the SVG, re-export the
+  PNG (e.g. `rsvg-convert og-image.svg -o og-image.png` or a headless-browser
+  screenshot) so the two stay in sync.
 - **Console commands** are in the `consoleApp()` function in `script.js`.
 
 ---

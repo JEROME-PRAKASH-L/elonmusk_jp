@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="green">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — no such file · Jerome Prakash L</title>
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#04070a" />
+
+  <!-- Inline SVG favicon: terminal prompt (same as index) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b1110'/%3E%3Cpath d='M7 10l6 6-6 6' fill='none' stroke='%235ef2a0' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='16' y1='22' x2='25' y2='22' stroke='%235ef2a0' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Spectral:ital,wght@1,500;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Absolute paths: GitHub Pages serves this file for ANY missing path,
+       including nested ones, so relative URLs would break. -->
+  <link rel="stylesheet" href="/elonmusk_jp/styles.css" />
+  <style>
+    .err404 { color: var(--red); margin: 0 0 26px; }
+    .code404 {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 600;
+      font-size: clamp(64px, 14vw, 120px);
+      line-height: 1;
+      color: var(--accent);
+      margin: 0 0 10px;
+    }
+    .msg404 { color: var(--text-dim); max-width: 52ch; margin: 0 0 28px; }
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <div class="terminal">
+
+      <div class="titlebar">
+        <div class="lights" aria-hidden="true">
+          <span class="light light--red"></span>
+          <span class="light light--amber"></span>
+          <span class="light light--green"></span>
+        </div>
+        <div class="titlebar__title">jerome@portfolio — bash</div>
+        <div class="titlebar__controls">
+          <button id="theme-toggle" class="ghost-btn" type="button" aria-label="Switch colour theme" title="Switch theme (green / amber)">
+            <span class="theme-dot" aria-hidden="true"></span><span class="theme-name">green</span>
+          </button>
+        </div>
+      </div>
+
+      <main class="content" id="content">
+        <section class="section" style="border-bottom: none;">
+          <p class="cmd"><span class="cmd__prompt">&gt;</span> cat ./requested-page</p>
+          <p class="err404">cat: ./requested-page: No such file or directory</p>
+          <h1 class="code404">404</h1>
+          <p class="msg404">
+            This path doesn't exist in <code>~/jerome</code> — it may have been moved,
+            renamed, or never committed in the first place.
+          </p>
+          <div class="whoami__actions">
+            <a class="btn btn--solid" href="/elonmusk_jp/">cd ~/jerome</a>
+            <a class="btn" href="/elonmusk_jp/#contact">./contact.sh</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>© <span id="year">2026</span> Jerome Prakash L</span>
+        <span class="footer__sep">·</span>
+        <span>exit code 404 — file not found</span>
+      </footer>
+    </div>
+  </div>
+
+  <script src="/elonmusk_jp/script.js" defer></script>
+</body>
+</html>

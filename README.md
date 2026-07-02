@@ -20,16 +20,19 @@ so it drops straight onto GitHub Pages, Netlify, Vercel, or any static host.
 
 | File | Purpose |
 |------|---------|
-| `index.html` | Markup + all content |
+| `index.html` | Markup + all content (incl. JSON-LD structured data) |
 | `styles.css` | Theme, layout, responsive, terminal aesthetic |
 | `script.js`  | Active-nav, theme toggle, typed name, interactive console |
+| `404.html`   | Terminal-styled "file not found" page (GitHub Pages picks it up automatically) |
+| `robots.txt` / `sitemap.xml` | Crawler hints for search engines |
 | `Jerome_Prakash_L_Resume.pdf` | Linked from the sidebar (`↓ resume.pdf`) |
 
 ## Features
 
 - **Click *or* type to navigate.** Sidebar links work with zero typing; the
-  command line (`help`, `ls`, `open projects`, `skills`, `resume`, `theme`, …)
-  is an optional delight layer.
+  command line (`help`, `ls`, `open projects`, `skills`, `resume`, `theme`,
+  `neofetch`, …) is an optional delight layer — with Tab completion, ↑/↓
+  history browsing, and a `history` command.
 - **Two themes** — phosphor green (default) and amber — toggle in the title bar,
   remembered via `localStorage`.
 - **Accessible & responsive** — semantic landmarks, keyboard focus rings, a skip

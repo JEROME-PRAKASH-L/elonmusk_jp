@@ -193,6 +193,7 @@
       "available commands:",
       "  help            show this list",
       "  whoami          who is Jerome",
+      "  neofetch        profile card, terminal-style",
       "  ls              list sections",
       "  open <section>  jump to a section (projects, skills, contact…)",
       "  skills          print skills.json",
@@ -201,7 +202,30 @@
       "  linkedin        open LinkedIn profile",
       "  github          open GitHub profile",
       "  theme           toggle green / amber",
-      "  clear           clear this console"
+      "  history         commands you've typed here",
+      "  clear           clear this console",
+      "",
+      "tip: Tab autocompletes, ↑/↓ browse history"
+    ].join("\n");
+
+    // every command name run() understands — used by Tab completion
+    var COMMANDS = [
+      "help", "whoami", "neofetch", "ls", "open", "cd", "goto", "cat",
+      "skills", "resume", "email", "linkedin", "github", "contact",
+      "theme", "history", "clear", "date", "echo", "exit"
+    ];
+
+    var NEOFETCH = [
+      " ╭───────────────╮   jerome@portfolio",
+      " │  >_           │   ─────────────────",
+      " │               │   OS:        JeromeOS 2026.1 · terminal edition",
+      " │   jerome-os   │   Host:      Chennai, Tamil Nadu, India",
+      " ╰───────────────╯   Kernel:    B.E. CSE · DMI College of Engineering",
+      "                     Shell:     Python · JavaScript",
+      "                     Packages:  7 (certs) · 2 (projects)",
+      "                     Focus:     AI Agents · Automation · Computer Vision",
+      "                     Writing:   1,000+ LinkedIn followers",
+      "                     Contact:   prakashjerome152@gmail.com"
     ].join("\n");
 
     var SKILLS = [
@@ -231,6 +255,15 @@
         case "whoami":
           out("Jerome Prakash L — CSE student building AI agents, automations & computer-vision tools.");
           go("whoami"); break;
+
+        case "neofetch":
+          out(NEOFETCH); break;
+
+        case "history":
+          out(history.length
+            ? history.map(function (h, i) { return ("   " + (i + 1)).slice(-4) + "  " + h; }).join("\n")
+            : "history: empty — you're looking at the first command.");
+          break;
 
         case "ls":
         case "dir":
@@ -324,6 +357,22 @@
         e.preventDefault();
         if (histIndex < history.length - 1) { histIndex++; input.value = history[histIndex]; }
         else { histIndex = history.length; input.value = ""; }
+      } else if (e.key === "Tab") {
+        e.preventDefault();
+        // complete the command word, or a section name after "open"/"cd"/"goto"/"cat"
+        var val = input.value;
+        var space = val.indexOf(" ");
+        var prefix = space === -1 ? "" : val.slice(0, space + 1);
+        var stem = (space === -1 ? val : val.slice(space + 1)).toLowerCase();
+        if (!stem) return;
+        var pool = space === -1 ? COMMANDS : Object.keys(SECTIONS);
+        var hits = pool.filter(function (c) { return c.indexOf(stem) === 0; });
+        if (hits.length === 1) {
+          input.value = prefix + hits[0];
+        } else if (hits.length > 1) {
+          out(hits.join("   "));
+          scrollLog();
+        }
       }
     });
 

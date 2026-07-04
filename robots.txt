@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jerome-prakash-l.github.io/elonmusk_jp/sitemap.xml

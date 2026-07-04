@@ -89,6 +89,7 @@
             <a class="nav-link" href="#experience" data-cmd="experience"><span class="nav-prompt">&gt;</span> experience</a>
             <a class="nav-link" href="#projects" data-cmd="projects"><span class="nav-prompt">&gt;</span> projects</a>
             <a class="nav-link" href="#repos" data-cmd="repos"><span class="nav-prompt">&gt;</span> repos</a>
+            <a class="nav-link" href="#workflows" data-cmd="workflows"><span class="nav-prompt">&gt;</span> workflows</a>
             <a class="nav-link" href="#skills" data-cmd="skills"><span class="nav-prompt">&gt;</span> skills</a>
             <a class="nav-link" href="#education" data-cmd="education"><span class="nav-prompt">&gt;</span> education</a>
             <a class="nav-link" href="#certs" data-cmd="certs"><span class="nav-prompt">&gt;</span> certs</a>
@@ -97,7 +98,7 @@
           </nav>
           <div class="sidebar__foot">
             <a class="sidebar__resume" href="Jerome_Prakash_L_Resume.pdf" target="_blank" rel="noopener">&#8595; resume.pdf</a>
-            <div class="sidebar__version">v2026.1.3</div>
+            <div class="sidebar__version">v2026.1.4</div>
           </div>
         </aside>
 
@@ -222,7 +223,19 @@
                 </span>
               </div>
               <div class="demo__stage" aria-live="polite"></div>
-              <p class="note demo__note"># simulated replay — the real agent runs on WSL2, driven over Telegram</p>
+              <div class="demo__chatline">
+                <label class="demo__chat-prompt" for="openclaw-input">you@telegram:</label>
+                <input
+                  id="openclaw-input"
+                  class="demo__chat-input"
+                  type="text"
+                  autocomplete="off"
+                  autocapitalize="off"
+                  spellcheck="false"
+                  placeholder="try: todo app · login page · chatbot"
+                  aria-label="Message the OpenClaw demo" />
+              </div>
+              <p class="note demo__note"># simulated demo — the real agent runs on WSL2, driven over Telegram</p>
             </div>
 
             <div class="demo" id="demo-recap" hidden>
@@ -233,11 +246,22 @@
                   <button type="button" class="ghost-btn demo-close" aria-label="Close demo">✕</button>
                 </span>
               </div>
+              <div class="demo__ctrl">
+                <span class="demo__status"><span class="demo__status-dot" aria-hidden="true"></span> active</span>
+                <span class="demo__next">next run: <span id="recap-next">tomorrow 05:00</span></span>
+                <label class="demo__interval">interval
+                  <select id="recap-interval" aria-label="Recap interval">
+                    <option value="daily" selected>daily</option>
+                    <option value="weekly">weekly</option>
+                  </select>
+                </label>
+                <button type="button" class="ghost-btn demo-runnow">▶ run now</button>
+              </div>
               <div class="demo__stage" aria-live="polite"></div>
               <p class="note demo__note"># simulated replay — the real automation runs on Gmail + Google Calendar connectors</p>
             </div>
 
-            <!-- the mini login page OpenClaw "builds" at the end of its demo -->
+            <!-- the mini apps OpenClaw "builds" in its demo -->
             <template id="demo-login-template">
               <div class="demo-login">
                 <div class="demo-login__title">Welcome back</div>
@@ -250,6 +274,28 @@
                 <button type="button" class="demo-login__btn">Sign in</button>
               </div>
             </template>
+
+            <template id="demo-todo-template">
+              <div class="demo-login demo-todo">
+                <div class="demo-login__title">My Tasks</div>
+                <div class="demo-todo__addrow">
+                  <input class="demo-login__input demo-todo__input" type="text" placeholder="new task…" aria-label="New task" />
+                  <button type="button" class="demo-login__btn demo-todo__add">add</button>
+                </div>
+                <ul class="demo-todo__list">
+                  <li><label class="demo-todo__item"><input type="checkbox" /> <span>ship portfolio demos</span></label></li>
+                  <li><label class="demo-todo__item"><input type="checkbox" /> <span>apply to internships</span></label></li>
+                </ul>
+              </div>
+            </template>
+
+            <template id="demo-bot-template">
+              <div class="demo-login demo-bot">
+                <div class="demo-login__title">chatbot.py</div>
+                <div class="demo-bot__log"><div class="demo-bot__line">&gt;&gt;&gt; bot ready — say hi</div></div>
+                <input class="demo-login__input demo-bot__input" type="text" placeholder="say something…" aria-label="Message the chatbot" />
+              </div>
+            </template>
           </section>
 
           <!-- ===== repos (live from the GitHub API — progressive enhancement) ===== -->
@@ -260,6 +306,53 @@
               # Live list, fetched from the GitHub API — browse everything at
               <a href="https://github.com/jerome-prakash-l?tab=repositories" target="_blank" rel="noopener">github.com/jerome-prakash-l</a>.
             </p>
+          </section>
+
+          <!-- ===== workflows (animated pipelines, played by workflowsApp) ===== -->
+          <section class="section" id="workflows" aria-labelledby="workflows-cmd">
+            <h2 class="cmd" id="workflows-cmd"><span class="cmd__prompt">&gt;</span> cat ./workflows.yml</h2>
+            <div class="wfs">
+
+              <div class="wf" data-wf="recap">
+                <div class="wf__head">
+                  <span class="wf__name">daily-inbox-recap</span>
+                  <span class="wf__on">on: cron "0 5 * * *"</span>
+                  <button type="button" class="ghost-btn wf-play">⟲ play</button>
+                </div>
+                <div class="wf__pipe" role="list" aria-label="daily-inbox-recap pipeline">
+                  <span class="wf__node" role="listitem">cron 05:00</span>
+                  <span class="wf__arrow" aria-hidden="true">→</span>
+                  <span class="wf__node" role="listitem">Gmail · 24 h</span>
+                  <span class="wf__arrow" aria-hidden="true">→</span>
+                  <span class="wf__node" role="listitem">Calendar</span>
+                  <span class="wf__arrow" aria-hidden="true">→</span>
+                  <span class="wf__node" role="listitem">AI agent</span>
+                  <span class="wf__arrow" aria-hidden="true">→</span>
+                  <span class="wf__node" role="listitem">summary ✉</span>
+                </div>
+              </div>
+
+              <div class="wf" data-wf="openclaw">
+                <div class="wf__head">
+                  <span class="wf__name">openclaw-agent</span>
+                  <span class="wf__on">on: telegram message</span>
+                  <button type="button" class="ghost-btn wf-play">⟲ play</button>
+                </div>
+                <div class="wf__pipe" role="list" aria-label="openclaw-agent pipeline">
+                  <span class="wf__node" role="listitem">Telegram msg</span>
+                  <span class="wf__arrow" aria-hidden="true">→</span>
+                  <span class="wf__node" role="listitem">gateway</span>
+                  <span class="wf__arrow" aria-hidden="true">→</span>
+                  <span class="wf__node" role="listitem">AI agent</span>
+                  <span class="wf__arrow" aria-hidden="true">→</span>
+                  <span class="wf__node" role="listitem">write files</span>
+                  <span class="wf__arrow" aria-hidden="true">→</span>
+                  <span class="wf__node" role="listitem">~/MyApp</span>
+                </div>
+              </div>
+
+            </div>
+            <p class="note"># the same pipelines that power the <a href="#projects" data-cmd="projects">projects/</a> demos — every run is hands-off.</p>
           </section>
 
           <!-- ===== skills ===== -->

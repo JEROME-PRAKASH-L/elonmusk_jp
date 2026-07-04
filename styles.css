@@ -560,6 +560,143 @@ button.proj-link {
 .demo-mail__list li::before { content: "▸"; position: absolute; left: 0; color: var(--accent-deep); }
 .demo-mail__foot { margin: 0; color: var(--text-faint); font-size: 12px; }
 
+/* choice chips the agent offers in the OpenClaw demo */
+.demo__choices { display: flex; flex-wrap: wrap; gap: 8px; align-self: flex-start; }
+.demo__choice {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--accent);
+  background: var(--accent-glow);
+  border: 1px solid var(--accent-deep);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: border-color .15s, transform .12s;
+  animation: demo-in .25s ease;
+}
+.demo__choice:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+/* free-text chat input at the bottom of the OpenClaw demo */
+.demo__chatline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  border-top: 1px solid var(--border-soft);
+}
+.demo__chat-prompt { color: var(--accent); font-size: 12.5px; white-space: nowrap; flex: 0 0 auto; }
+.demo__chat-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  caret-color: var(--accent);
+}
+.demo__chat-input::placeholder { color: var(--text-faint); }
+.demo__chat-input:focus:not(:focus-visible) { outline: none; }
+
+/* recap automation control strip */
+.demo__ctrl {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.demo__status { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); }
+.demo__status-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+.demo__interval { display: inline-flex; align-items: center; gap: 6px; }
+.demo__interval select {
+  background: var(--term-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 3px 6px;
+}
+.demo-runnow { margin-left: auto; }
+
+/* todo mini-app */
+.demo-todo__addrow { display: flex; gap: 8px; }
+.demo-todo__addrow .demo-todo__input { flex: 1; min-width: 0; }
+.demo-todo__addrow .demo-todo__add { margin-top: 0; padding: 7px 12px; }
+.demo-todo__list { display: flex; flex-direction: column; gap: 6px; }
+.demo-todo__item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text); cursor: pointer; }
+.demo-todo__item input { accent-color: var(--accent); }
+.demo-todo__item input:checked ~ span { text-decoration: line-through; color: var(--text-faint); }
+
+/* chatbot mini-app */
+.demo-bot__log {
+  background: var(--sidebar-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  max-height: 140px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.demo-bot__line { font-size: 12.5px; color: var(--text-dim); white-space: pre-wrap; }
+.demo-bot__line--you { color: var(--text); }
+
+/* ---------- workflows (animated pipelines) ---------- */
+.wfs { display: flex; flex-direction: column; gap: 16px; }
+.wf {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.015), transparent);
+}
+.wf__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.wf__name { color: var(--accent); font-size: 14px; font-weight: 700; }
+.wf__on { color: var(--text-faint); font-size: 12px; }
+.wf__head .wf-play { margin-left: auto; }
+.wf__pipe {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 6px;
+}
+.wf__node {
+  font-size: 12.5px;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 13px;
+  white-space: nowrap;
+  transition: border-color .2s, color .2s, box-shadow .2s;
+}
+.wf__node.is-run {
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 14px var(--accent-glow);
+  animation: wf-pulse 0.9s ease infinite;
+}
+.wf__node.is-done { color: var(--accent); border-color: var(--accent-deep); }
+.wf__node.is-done::after { content: " ✓"; }
+.wf__arrow { color: var(--text-faint); font-size: 13px; }
+@keyframes wf-pulse {
+  50% { box-shadow: 0 0 4px var(--accent-glow); }
+}
+
 /* ---------- live GitHub repos (cards reuse .project) ---------- */
 .repo__link { color: inherit; }
 .repo__link:hover { color: var(--accent-soft); text-decoration: none; }

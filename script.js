@@ -239,7 +239,160 @@
   })();
 
   /* =======================================================================
-     5. Interactive console (delight layer)
+     5. Project demos — simulated replays of OpenClaw & the inbox recap.
+     All demo text is our own static strings; the login preview is cloned
+     from a <template> in index.html. A run token cancels stale playback.
+     ======================================================================= */
+  (function demosApp() {
+    var toggles = Array.prototype.slice.call(document.querySelectorAll(".demo-toggle"));
+    if (!toggles.length) return;
+
+    var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var runToken = 0;
+    var openId = null;
+
+    function el(tag, cls, text) {
+      var n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (text) n.textContent = text;
+      return n;
+    }
+
+    var SCRIPTS = {
+      openclaw: [
+        { kind: "user",   text: "Build a login page using HTML/CSS/JS", delay: 500 },
+        { kind: "agent",  text: "on it — creating files in ~/MyApp …", delay: 650 },
+        { kind: "log",    text: "[gateway] agent connected · model ready", delay: 320 },
+        { kind: "log",    text: "[hooks] loaded 4 internal hook handlers", delay: 320 },
+        { kind: "log",    text: "~/MyApp $ write index.html ✓", delay: 380 },
+        { kind: "log",    text: "~/MyApp $ write style.css ✓", delay: 380 },
+        { kind: "log",    text: "~/MyApp $ write script.js ✓", delay: 420 },
+        { kind: "agent",  text: "done — 3 files created. live preview:", delay: 620 },
+        { kind: "insert", what: "login", delay: 250 }
+      ],
+      recap: [
+        { kind: "log",    text: "05:00 cron: daily-inbox-recap started", delay: 480 },
+        { kind: "log",    text: "connecting to Gmail… ✓", delay: 420 },
+        { kind: "log",    text: "scanning last 24 h… 47 emails", delay: 480 },
+        { kind: "log",    text: "calendar context… 3 events today", delay: 420 },
+        { kind: "log",    text: "extracting action items… 3 found", delay: 480 },
+        { kind: "log",    text: "composing summary… ✓ sending", delay: 560 },
+        { kind: "insert", what: "mail", delay: 250 }
+      ]
+    };
+
+    function insertLogin(box) {
+      var tpl = document.getElementById("demo-login-template");
+      if (!tpl || !("content" in tpl)) return;
+      box.appendChild(tpl.content.cloneNode(true));
+      var btn = box.querySelector(".demo-login__btn");
+      if (btn) btn.addEventListener("click", function () {
+        btn.textContent = "signed in ✓";
+        btn.classList.add("is-done");
+      });
+    }
+
+    function insertMail(box) {
+      var d = new Date();
+      var mail = el("div", "demo-mail");
+      mail.appendChild(el("div", "demo-mail__subject",
+        "Daily Incoming Mail Recap — " + MONTHS[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear()));
+      mail.appendChild(el("div", "demo-mail__meta", "to: prakashjerome152@gmail.com · sent 05:00 AM"));
+      mail.appendChild(el("p", "demo-mail__lead", "Top items worth checking:"));
+      var ul = el("ul", "demo-mail__list");
+      [
+        "Internship application — recruiter replied, needs a response today",
+        "GitHub: 2 pull-request reviews requested",
+        "College: project submission deadline moved to Friday"
+      ].forEach(function (t) { ul.appendChild(el("li", "", t)); });
+      mail.appendChild(ul);
+      mail.appendChild(el("p", "demo-mail__foot", "Today: 3 calendar events · no urgent flags — have a great morning ☀"));
+      box.appendChild(mail);
+    }
+
+    function play(id) {
+      var panel = document.getElementById("demo-" + id);
+      var box = panel ? panel.querySelector(".demo__stage") : null;
+      if (!box) return;
+      runToken++;
+      var token = runToken;
+      var steps = SCRIPTS[id] || [];
+      box.textContent = "";
+
+      function schedule(i, delay) {
+        if (prefersReduced) { doStep(i); }
+        else { setTimeout(function () { doStep(i); }, delay || 400); }
+      }
+
+      function doStep(i) {
+        if (token !== runToken || i >= steps.length) return;
+        var s = steps[i];
+
+        if (s.kind === "user" && !prefersReduced) {
+          // typewriter for the "typed on Telegram" bubble
+          var bubble = el("div", "demo__msg demo__msg--user", "");
+          box.appendChild(bubble);
+          var c = 0;
+          (function typeChar() {
+            if (token !== runToken) return;
+            if (c <= s.text.length) {
+              bubble.textContent = s.text.slice(0, c);
+              c++;
+              setTimeout(typeChar, 36);
+            } else {
+              schedule(i + 1, s.delay);
+            }
+          })();
+          return;
+        }
+
+        if (s.kind === "insert") {
+          if (s.what === "login") insertLogin(box);
+          else insertMail(box);
+        } else if (s.kind === "log") {
+          box.appendChild(el("div", "demo__logline", s.text));
+        } else {
+          box.appendChild(el("div", "demo__msg demo__msg--" + s.kind, s.text));
+        }
+        schedule(i + 1, s.delay);
+      }
+
+      doStep(0);
+    }
+
+    function closeAll() {
+      runToken++;
+      Array.prototype.slice.call(document.querySelectorAll(".demo")).forEach(function (p) { p.hidden = true; });
+      openId = null;
+    }
+
+    function open(id) {
+      var panel = document.getElementById("demo-" + id);
+      if (!panel) return;
+      closeAll();
+      panel.hidden = false;
+      openId = id;
+      play(id);
+      panel.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "nearest" });
+    }
+
+    toggles.forEach(function (t) {
+      t.addEventListener("click", function () {
+        var id = t.getAttribute("data-demo");
+        if (openId === id) closeAll();
+        else open(id);
+      });
+    });
+    Array.prototype.slice.call(document.querySelectorAll(".demo-close")).forEach(function (b) {
+      b.addEventListener("click", closeAll);
+    });
+    Array.prototype.slice.call(document.querySelectorAll(".demo-replay")).forEach(function (b) {
+      b.addEventListener("click", function () { play(b.getAttribute("data-demo")); });
+    });
+  })();
+
+  /* =======================================================================
+     6. Interactive console (delight layer)
      ======================================================================= */
   (function consoleApp() {
     var input = document.getElementById("console-input");
@@ -301,6 +454,7 @@
       "  neofetch        profile card, terminal-style",
       "  ls              list sections",
       "  open <section>  jump to a section (projects, skills, contact…)",
+      "  demo <name>     play a project demo (openclaw · recap)",
       "  repos           live GitHub repositories",
       "  skills          print skills.json",
       "  resume          open résumé (PDF)",
@@ -317,8 +471,8 @@
     // every command name run() understands — used by Tab completion
     var COMMANDS = [
       "help", "whoami", "neofetch", "ls", "open", "cd", "goto", "cat",
-      "repos", "skills", "resume", "email", "linkedin", "github", "contact",
-      "theme", "history", "clear", "date", "echo", "exit"
+      "demo", "repos", "skills", "resume", "email", "linkedin", "github",
+      "contact", "theme", "history", "clear", "date", "echo", "exit"
     ];
 
     var NEOFETCH = [
@@ -411,6 +565,21 @@
         case "in":
           outHTML('opening LinkedIn… <a href="' + LINKEDIN + '" target="_blank" rel="noopener">' + LINKEDIN + '</a>');
           window.open(LINKEDIN, "_blank", "noopener");
+          break;
+
+        case "demo":
+          var target = (arg === "inbox" || arg === "recap") ? "recap"
+            : (arg === "openclaw" || arg === "claw") ? "openclaw" : "";
+          if (target) {
+            var panel = document.getElementById("demo-" + target);
+            var replayBtn = document.querySelector('.demo-replay[data-demo="' + target + '"]');
+            var toggleBtn = document.querySelector('.demo-toggle[data-demo="' + target + '"]');
+            if (panel && !panel.hidden && replayBtn) { replayBtn.click(); out("⟲ replaying " + target + " demo"); }
+            else if (toggleBtn) { toggleBtn.click(); out("▶ playing " + target + " demo"); }
+            else out("demo: not available", "line-err");
+          } else {
+            out("demos: openclaw · recap — try 'demo openclaw'");
+          }
           break;
 
         case "github":

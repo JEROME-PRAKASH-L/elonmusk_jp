@@ -33,6 +33,10 @@ so it drops straight onto GitHub Pages, Netlify, Vercel, or any static host.
   command line (`help`, `ls`, `open projects`, `skills`, `resume`, `theme`,
   `neofetch`, …) is an optional delight layer — with Tab completion, ↑/↓
   history browsing, and a `history` command.
+- **Live GitHub repos.** The `repos` section fetches public repositories from
+  the GitHub API when it scrolls into view (cached in `sessionStorage` for an
+  hour, forks filtered out). If JavaScript is off or the API is unavailable,
+  a plain link to the GitHub profile remains.
 - **Two themes** — phosphor green (default) and amber — toggle in the title bar,
   remembered via `localStorage`.
 - **Accessible & responsive** — semantic landmarks, keyboard focus rings, a skip

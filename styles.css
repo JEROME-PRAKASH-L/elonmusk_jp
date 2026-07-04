@@ -429,6 +429,28 @@ code { font-family: var(--font-mono); }
 .proj-link { font-size: 13px; color: var(--accent); }
 .proj-link:hover { color: var(--accent-soft); }
 
+/* ---------- live GitHub repos (cards reuse .project) ---------- */
+.repo__link { color: inherit; }
+.repo__link:hover { color: var(--accent-soft); text-decoration: none; }
+.repo__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  align-items: center;
+  margin-top: auto;
+  color: var(--text-faint);
+  font-size: 12px;
+}
+.repo__lang { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); }
+.repo__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent-glow);
+}
+.repo__loading { margin: 0; color: var(--text-faint); font-size: 13px; }
+
 /* ---------- skills.json ---------- */
 .json {
   margin: 0;

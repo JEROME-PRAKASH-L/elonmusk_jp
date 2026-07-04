@@ -88,6 +88,7 @@
             <a class="nav-link is-active" href="#whoami" data-cmd="whoami"><span class="nav-prompt">&gt;</span> $ whoami</a>
             <a class="nav-link" href="#experience" data-cmd="experience"><span class="nav-prompt">&gt;</span> experience</a>
             <a class="nav-link" href="#projects" data-cmd="projects"><span class="nav-prompt">&gt;</span> projects</a>
+            <a class="nav-link" href="#repos" data-cmd="repos"><span class="nav-prompt">&gt;</span> repos</a>
             <a class="nav-link" href="#skills" data-cmd="skills"><span class="nav-prompt">&gt;</span> skills</a>
             <a class="nav-link" href="#education" data-cmd="education"><span class="nav-prompt">&gt;</span> education</a>
             <a class="nav-link" href="#certs" data-cmd="certs"><span class="nav-prompt">&gt;</span> certs</a>
@@ -96,7 +97,7 @@
           </nav>
           <div class="sidebar__foot">
             <a class="sidebar__resume" href="Jerome_Prakash_L_Resume.pdf" target="_blank" rel="noopener">&#8595; resume.pdf</a>
-            <div class="sidebar__version">v2026.1.1</div>
+            <div class="sidebar__version">v2026.1.2</div>
           </div>
         </aside>
 
@@ -214,6 +215,16 @@
               </article>
 
             </div>
+          </section>
+
+          <!-- ===== repos (live from the GitHub API — progressive enhancement) ===== -->
+          <section class="section" id="repos" aria-labelledby="repos-cmd">
+            <h2 class="cmd" id="repos-cmd"><span class="cmd__prompt">&gt;</span> gh repo list jerome-prakash-l</h2>
+            <div class="projects" id="repo-grid" aria-live="polite"></div>
+            <p class="note">
+              # Live list, fetched from the GitHub API — browse everything at
+              <a href="https://github.com/jerome-prakash-l?tab=repositories" target="_blank" rel="noopener">github.com/jerome-prakash-l</a>.
+            </p>
           </section>
 
           <!-- ===== skills ===== -->

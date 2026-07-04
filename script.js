@@ -135,7 +135,111 @@
   })();
 
   /* =======================================================================
-     4. Interactive console (delight layer)
+     4. Live GitHub repos (progressive enhancement)
+     The #repos section ships with a static fallback link; cards are added
+     only if the API call succeeds. Fetch is lazy (when the section nears
+     the viewport) and cached in sessionStorage to respect the anonymous
+     rate limit.
+     ======================================================================= */
+  (function reposApp() {
+    var section = document.getElementById("repos");
+    var grid = document.getElementById("repo-grid");
+    if (!section || !grid || !window.fetch) return;
+
+    var USER = "jerome-prakash-l";
+    var API = "https://api.github.com/users/" + USER + "/repos?sort=pushed&per_page=12";
+    var CACHE_KEY = "jp-repos-v1";
+    var CACHE_TTL = 60 * 60 * 1000; // 1 hour
+    var MAX_CARDS = 6;
+    var started = false;
+
+    var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    function monthYear(iso) {
+      var d = new Date(iso);
+      return isNaN(d.getTime()) ? "" : MONTHS[d.getMonth()] + " " + d.getFullYear();
+    }
+
+    // External data (repo names/descriptions) goes through textContent only.
+    function el(tag, cls, text) {
+      var n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (text) n.textContent = text;
+      return n;
+    }
+
+    function render(repos) {
+      var shown = repos.filter(function (r) { return r && !r.fork; }).slice(0, MAX_CARDS);
+      if (!shown.length) return;
+      shown.forEach(function (r) {
+        var card = el("article", "project repo");
+        var head = el("header", "project__head");
+        var title = el("h3", "project__title");
+        var link = el("a", "repo__link", r.name);
+        link.href = r.html_url;
+        link.target = "_blank";
+        link.rel = "noopener";
+        title.appendChild(link);
+        head.appendChild(title);
+        if (r.stargazers_count > 0) head.appendChild(el("span", "project__type", "★ " + r.stargazers_count));
+        card.appendChild(head);
+        if (r.description) card.appendChild(el("p", "project__desc", r.description));
+        var meta = el("div", "repo__meta");
+        if (r.language) {
+          var lang = el("span", "repo__lang", r.language);
+          lang.insertBefore(el("i", "repo__dot"), lang.firstChild);
+          meta.appendChild(lang);
+        }
+        if (r.pushed_at) meta.appendChild(el("span", "", "updated " + monthYear(r.pushed_at)));
+        card.appendChild(meta);
+        grid.appendChild(card);
+      });
+    }
+
+    function load() {
+      if (started) return;
+      started = true;
+
+      try {
+        var cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) || "null");
+        if (cached && cached.t && Date.now() - cached.t < CACHE_TTL && cached.repos) {
+          render(cached.repos);
+          return;
+        }
+      } catch (e) { /* bad cache — fall through to a fresh fetch */ }
+
+      var loading = el("p", "repo__loading", "fetching repositories…");
+      grid.appendChild(loading);
+
+      fetch(API)
+        .then(function (res) {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.json();
+        })
+        .then(function (repos) {
+          if (!Array.isArray(repos)) throw new Error("unexpected payload");
+          try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), repos: repos })); } catch (e) {}
+          grid.removeChild(loading);
+          render(repos);
+        })
+        .catch(function () {
+          if (loading.parentNode) grid.removeChild(loading);
+          // fallback note below the grid stays — nothing else to do
+        });
+    }
+
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        var near = entries.some(function (e) { return e.isIntersecting; });
+        if (near) { io.disconnect(); load(); }
+      }, { rootMargin: "400px 0px" });
+      io.observe(section);
+    } else {
+      load();
+    }
+  })();
+
+  /* =======================================================================
+     5. Interactive console (delight layer)
      ======================================================================= */
   (function consoleApp() {
     var input = document.getElementById("console-input");
@@ -152,6 +256,7 @@
       whoami: "whoami", about: "whoami",
       experience: "experience", exp: "experience",
       projects: "projects", project: "projects",
+      repos: "repos", repo: "repos",
       skills: "skills",
       education: "education", edu: "education",
       certs: "certs", certifications: "certs",
@@ -196,6 +301,7 @@
       "  neofetch        profile card, terminal-style",
       "  ls              list sections",
       "  open <section>  jump to a section (projects, skills, contact…)",
+      "  repos           live GitHub repositories",
       "  skills          print skills.json",
       "  resume          open résumé (PDF)",
       "  email           email Jerome (opens Gmail)",
@@ -211,7 +317,7 @@
     // every command name run() understands — used by Tab completion
     var COMMANDS = [
       "help", "whoami", "neofetch", "ls", "open", "cd", "goto", "cat",
-      "skills", "resume", "email", "linkedin", "github", "contact",
+      "repos", "skills", "resume", "email", "linkedin", "github", "contact",
       "theme", "history", "clear", "date", "echo", "exit"
     ];
 
@@ -267,7 +373,7 @@
 
         case "ls":
         case "dir":
-          out("experience/   projects/   skills.json   education/   certs/   writing.md   contact.json");
+          out("experience/   projects/   repos/   skills.json   education/   certs/   writing.md   contact.json");
           break;
 
         case "open":

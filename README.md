@@ -33,6 +33,15 @@ so it drops straight onto GitHub Pages, Netlify, Vercel, or any static host.
   command line (`help`, `ls`, `open projects`, `skills`, `resume`, `theme`,
   `neofetch`, …) is an optional delight layer — with Tab completion, ↑/↓
   history browsing, and a `history` command.
+- **Live GitHub repos.** The `repos` section fetches public repositories from
+  the GitHub API when it scrolls into view (cached in `sessionStorage` for an
+  hour, forks filtered out). If JavaScript is off or the API is unavailable,
+  a plain link to the GitHub profile remains.
+- **Project demos.** Each project card has a "▶ run demo" button that plays a
+  simulated replay in-page: OpenClaw types a Telegram request and "builds" a
+  working mini login page; the inbox recap runs its 05:00 pipeline and renders
+  the summary email. Also available via the `demo openclaw` / `demo recap`
+  console commands. Clearly labeled as simulations.
 - **Two themes** — phosphor green (default) and amber — toggle in the title bar,
   remembered via `localStorage`.
 - **Accessible & responsive** — semantic landmarks, keyboard focus rings, a skip

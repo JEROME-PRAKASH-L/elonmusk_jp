@@ -429,6 +429,159 @@ code { font-family: var(--font-mono); }
 .proj-link { font-size: 13px; color: var(--accent); }
 .proj-link:hover { color: var(--accent-soft); }
 
+/* ---------- project demos (simulated replays) ---------- */
+button.proj-link {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-mono);
+}
+.demo {
+  margin-top: 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--sidebar-bg);
+  overflow: hidden;
+}
+.demo__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--term-bar);
+  border-bottom: 1px solid var(--border);
+  font-size: 12.5px;
+  color: var(--text-dim);
+}
+.demo__controls { display: flex; gap: 8px; }
+.demo__stage {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 110px;
+}
+.demo__msg {
+  max-width: 78%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  animation: demo-in .25s ease;
+}
+.demo__msg--user {
+  align-self: flex-end;
+  background: var(--accent-glow);
+  border: 1px solid var(--accent-deep);
+  border-bottom-right-radius: 4px;
+}
+.demo__msg--agent {
+  align-self: flex-start;
+  background: var(--term-bar);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 4px;
+}
+.demo__logline {
+  font-size: 12.5px;
+  color: var(--text-dim);
+  white-space: pre-wrap;
+  animation: demo-in .25s ease;
+}
+@keyframes demo-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+.demo__note { margin: 0; padding: 8px 12px 10px; }
+
+.demo-login {
+  align-self: flex-start;
+  width: min(280px, 100%);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--term-bg);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: demo-in .3s ease;
+}
+.demo-login__title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--accent);
+}
+.demo-login__label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.demo-login__input {
+  background: var(--sidebar-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 7px 9px;
+}
+.demo-login__btn {
+  margin-top: 4px;
+  padding: 8px 12px;
+  border-radius: 7px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #04201a;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+}
+.demo-login__btn.is-done { background: transparent; color: var(--accent); }
+
+.demo-mail {
+  align-self: stretch;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  background: var(--term-bg);
+  padding: 14px 16px;
+  animation: demo-in .3s ease;
+}
+.demo-mail__subject { color: var(--accent); font-size: 14px; font-weight: 700; }
+.demo-mail__meta { color: var(--text-faint); font-size: 11.5px; margin: 4px 0 10px; }
+.demo-mail__lead { margin: 0 0 6px; color: var(--text); font-size: 13px; }
+.demo-mail__list { display: flex; flex-direction: column; gap: 4px; margin: 0 0 10px; }
+.demo-mail__list li { position: relative; padding-left: 16px; font-size: 12.5px; color: var(--text-dim); }
+.demo-mail__list li::before { content: "▸"; position: absolute; left: 0; color: var(--accent-deep); }
+.demo-mail__foot { margin: 0; color: var(--text-faint); font-size: 12px; }
+
+/* ---------- live GitHub repos (cards reuse .project) ---------- */
+.repo__link { color: inherit; }
+.repo__link:hover { color: var(--accent-soft); text-decoration: none; }
+.repo__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  align-items: center;
+  margin-top: auto;
+  color: var(--text-faint);
+  font-size: 12px;
+}
+.repo__lang { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); }
+.repo__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent-glow);
+}
+.repo__loading { margin: 0; color: var(--text-faint); font-size: 13px; }
+
 /* ---------- skills.json ---------- */
 .json {
   margin: 0;

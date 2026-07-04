@@ -38,10 +38,16 @@ so it drops straight onto GitHub Pages, Netlify, Vercel, or any static host.
   hour, forks filtered out). If JavaScript is off or the API is unavailable,
   a plain link to the GitHub profile remains.
 - **Project demos.** Each project card has a "▶ run demo" button that plays a
-  simulated replay in-page: OpenClaw types a Telegram request and "builds" a
-  working mini login page; the inbox recap runs its 05:00 pipeline and renders
-  the summary email. Also available via the `demo openclaw` / `demo recap`
-  console commands. Clearly labeled as simulations.
+  simulated replay in-page. The OpenClaw demo is interactive: the agent offers
+  `1. Todo app · 2. Login page · 3. Python chatbot`, and each choice builds a
+  *working* mini-app in the chat (tick off todos, sign in, chat with the bot) —
+  visitors can also type their own message into the chat input. The inbox-recap
+  demo has an automation control strip (status, next run, daily/weekly interval,
+  "▶ run now"). Also available via `demo openclaw` / `demo recap` console
+  commands. Clearly labeled as simulations.
+- **Workflows section.** `cat ./workflows.yml` shows the two automation
+  pipelines as CI-style diagrams whose nodes light up in sequence — auto-plays
+  when scrolled into view, replayable per card.
 - **Two themes** — phosphor green (default) and amber — toggle in the title bar,
   remembered via `localStorage`.
 - **Accessible & responsive** — semantic landmarks, keyboard focus rings, a skip

@@ -258,38 +258,146 @@
       return n;
     }
 
-    var SCRIPTS = {
-      openclaw: [
-        { kind: "user",   text: "Build a login page using HTML/CSS/JS", delay: 500 },
-        { kind: "agent",  text: "on it — creating files in ~/MyApp …", delay: 650 },
-        { kind: "log",    text: "[gateway] agent connected · model ready", delay: 320 },
-        { kind: "log",    text: "[hooks] loaded 4 internal hook handlers", delay: 320 },
-        { kind: "log",    text: "~/MyApp $ write index.html ✓", delay: 380 },
-        { kind: "log",    text: "~/MyApp $ write style.css ✓", delay: 380 },
-        { kind: "log",    text: "~/MyApp $ write script.js ✓", delay: 420 },
-        { kind: "agent",  text: "done — 3 files created. live preview:", delay: 620 },
-        { kind: "insert", what: "login", delay: 250 }
-      ],
-      recap: [
-        { kind: "log",    text: "05:00 cron: daily-inbox-recap started", delay: 480 },
-        { kind: "log",    text: "connecting to Gmail… ✓", delay: 420 },
-        { kind: "log",    text: "scanning last 24 h… 47 emails", delay: 480 },
-        { kind: "log",    text: "calendar context… 3 events today", delay: 420 },
-        { kind: "log",    text: "extracting action items… 3 found", delay: 480 },
-        { kind: "log",    text: "composing summary… ✓ sending", delay: 560 },
-        { kind: "insert", what: "mail", delay: 250 }
-      ]
+    var recapInterval = "daily";
+
+    // agent menu — mirrors the real OpenClaw session this demo replays
+    var CHOICES = [
+      { id: "todo",  label: "1. Todo app" },
+      { id: "login", label: "2. Login page" },
+      { id: "bot",   label: "3. Python chatbot" }
+    ];
+    var BUILDS = {
+      todo:  { name: "a todo app",        files: ["write index.html ✓", "write app.js ✓"] },
+      login: { name: "a login page",      files: ["write index.html ✓", "write style.css ✓", "write script.js ✓"] },
+      bot:   { name: "a python chatbot",  files: ["write chatbot.py ✓", "run python chatbot.py ✓"] }
     };
 
+    // Scripts are functions so each run can reflect current state (recap interval).
+    var SCRIPTS = {
+      openclaw: function () {
+        return [
+          { kind: "user",   text: "Build me something cool", delay: 450 },
+          { kind: "agent",  text: "I can build those — pick one and I'll create it directly:", delay: 550 },
+          { kind: "insert", what: "choices", delay: 250 }
+        ];
+      },
+      recap: function () {
+        return [
+          { kind: "log",    text: "05:00 cron: " + recapInterval + "-inbox-recap started", delay: 480 },
+          { kind: "log",    text: "connecting to Gmail… ✓", delay: 420 },
+          { kind: "log",    text: "scanning last 24 h… 47 emails", delay: 480 },
+          { kind: "log",    text: "calendar context… 3 events today", delay: 420 },
+          { kind: "log",    text: "extracting action items… 3 found", delay: 480 },
+          { kind: "log",    text: "composing summary… ✓ sending", delay: 560 },
+          { kind: "insert", what: "mail", delay: 250 }
+        ];
+      }
+    };
+
+    function buildSteps(choice) {
+      var build = BUILDS[choice];
+      var steps = [
+        { kind: "agent", text: "on it — creating " + build.name + " in ~/MyApp …", delay: 600 },
+        { kind: "log",   text: "[gateway] agent connected · model ready", delay: 320 }
+      ];
+      build.files.forEach(function (f) {
+        steps.push({ kind: "log", text: "~/MyApp $ " + f, delay: 400 });
+      });
+      steps.push({ kind: "agent", text: "done — live preview:", delay: 600 });
+      steps.push({ kind: "insert", what: choice, delay: 250 });
+      return steps;
+    }
+
+    // Clone a template and wire it up BEFORE appending, so repeat builds in the
+    // same stage never grab an earlier clone's elements.
+    function cloneTemplate(tplId, rootSel) {
+      var tpl = document.getElementById(tplId);
+      if (!tpl || !("content" in tpl)) return null;
+      var frag = tpl.content.cloneNode(true);
+      return { frag: frag, root: frag.querySelector(rootSel) };
+    }
+
     function insertLogin(box) {
-      var tpl = document.getElementById("demo-login-template");
-      if (!tpl || !("content" in tpl)) return;
-      box.appendChild(tpl.content.cloneNode(true));
-      var btn = box.querySelector(".demo-login__btn");
+      var c = cloneTemplate("demo-login-template", ".demo-login");
+      if (!c || !c.root) return;
+      var btn = c.root.querySelector(".demo-login__btn");
       if (btn) btn.addEventListener("click", function () {
         btn.textContent = "signed in ✓";
         btn.classList.add("is-done");
       });
+      box.appendChild(c.frag);
+    }
+
+    function insertTodo(box) {
+      var c = cloneTemplate("demo-todo-template", ".demo-todo");
+      if (!c || !c.root) return;
+      var input = c.root.querySelector(".demo-todo__input");
+      var addBtn = c.root.querySelector(".demo-todo__add");
+      var list = c.root.querySelector(".demo-todo__list");
+      function addTask() {
+        var t = (input.value || "").trim();
+        if (!t) return;
+        var li = document.createElement("li");
+        var label = el("label", "demo-todo__item");
+        var cb = document.createElement("input");
+        cb.type = "checkbox";
+        label.appendChild(cb);
+        label.appendChild(document.createTextNode(" "));
+        label.appendChild(el("span", "", t));
+        li.appendChild(label);
+        list.appendChild(li);
+        input.value = "";
+        input.focus();
+      }
+      if (addBtn) addBtn.addEventListener("click", addTask);
+      if (input) input.addEventListener("keydown", function (e) { if (e.key === "Enter") addTask(); });
+      box.appendChild(c.frag);
+    }
+
+    function insertBot(box) {
+      var c = cloneTemplate("demo-bot-template", ".demo-bot");
+      if (!c || !c.root) return;
+      var logBox = c.root.querySelector(".demo-bot__log");
+      var input = c.root.querySelector(".demo-bot__input");
+      var CYCLE = [
+        '>>> print("hello from jerome\'s bot")',
+        ">>> tip: automation beats motivation",
+        ">>> I was built from a single Telegram message 🤖"
+      ];
+      var ci = 0;
+      function reply(t) {
+        var lower = t.toLowerCase();
+        if (/^(hi|hey|hello|yo|vanakkam)\b/.test(lower)) return "hey! I'm a tiny Python bot 🐍 — built by OpenClaw";
+        if (lower.indexOf("how are you") !== -1) return "running at 0.02s per reply — never better";
+        if (lower.indexOf("name") !== -1) return "chatbot.py — Jerome's demo bot";
+        var r = CYCLE[ci % CYCLE.length];
+        ci++;
+        return r;
+      }
+      if (input) input.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter") return;
+        var t = (input.value || "").trim();
+        if (!t) return;
+        logBox.appendChild(el("div", "demo-bot__line demo-bot__line--you", "you: " + t));
+        input.value = "";
+        logBox.scrollTop = logBox.scrollHeight;
+        setTimeout(function () {
+          logBox.appendChild(el("div", "demo-bot__line", reply(t)));
+          logBox.scrollTop = logBox.scrollHeight;
+        }, prefersReduced ? 0 : 350);
+      });
+      box.appendChild(c.frag);
+    }
+
+    function insertChoices(box) {
+      var row = el("div", "demo__choices");
+      CHOICES.forEach(function (choice) {
+        var b = el("button", "demo__choice", choice.label);
+        b.type = "button";
+        b.addEventListener("click", function () { startBuild(choice.id, choice.label); });
+        row.appendChild(b);
+      });
+      box.appendChild(row);
     }
 
     function insertMail(box) {
@@ -310,14 +418,17 @@
       box.appendChild(mail);
     }
 
-    function play(id) {
+    function stageOf(id) {
       var panel = document.getElementById("demo-" + id);
-      var box = panel ? panel.querySelector(".demo__stage") : null;
+      return panel ? panel.querySelector(".demo__stage") : null;
+    }
+
+    function playSteps(id, steps, clear) {
+      var box = stageOf(id);
       if (!box) return;
       runToken++;
       var token = runToken;
-      var steps = SCRIPTS[id] || [];
-      box.textContent = "";
+      if (clear) box.textContent = "";
 
       function schedule(i, delay) {
         if (prefersReduced) { doStep(i); }
@@ -347,7 +458,10 @@
         }
 
         if (s.kind === "insert") {
-          if (s.what === "login") insertLogin(box);
+          if (s.what === "choices") insertChoices(box);
+          else if (s.what === "login") insertLogin(box);
+          else if (s.what === "todo") insertTodo(box);
+          else if (s.what === "bot") insertBot(box);
           else insertMail(box);
         } else if (s.kind === "log") {
           box.appendChild(el("div", "demo__logline", s.text));
@@ -358,6 +472,44 @@
       }
 
       doStep(0);
+    }
+
+    function play(id) {
+      playSteps(id, SCRIPTS[id] ? SCRIPTS[id]() : [], true);
+    }
+
+    // A choice chip was clicked: echo it as the visitor's message, then build.
+    function startBuild(choice, echoText) {
+      var box = stageOf("openclaw");
+      if (!box || !BUILDS[choice]) return;
+      runToken++;
+      box.appendChild(el("div", "demo__msg demo__msg--user", echoText));
+      playSteps("openclaw", buildSteps(choice), false);
+    }
+
+    // Free-typed message from the demo's chat input. The raw text is rendered
+    // via textContent only, then keyword-routed to a build or a canned reply.
+    function routeMessage(raw) {
+      var box = stageOf("openclaw");
+      if (!box) return;
+      runToken++;
+      var token = runToken;
+      box.appendChild(el("div", "demo__msg demo__msg--user", raw));
+      var t = raw.toLowerCase();
+      var choice = /(^|\W)(1|todo|task)(\W|$)/.test(t) ? "todo"
+        : /(^|\W)(2|login|sign)(\W|$)/.test(t) ? "login"
+        : /(^|\W)(3|chatbot|chat|bot|python)(\W|$)/.test(t) ? "bot" : "";
+      if (choice) {
+        playSteps("openclaw", buildSteps(choice), false);
+        return;
+      }
+      var replyText = /^(hi|hey|hello|yo|vanakkam)\b/.test(t)
+        ? "hey 👋 — I'm the OpenClaw demo. pick a build: todo app · login page · chatbot"
+        : 'I can build: todo app · login page · python chatbot — try "todo app"';
+      setTimeout(function () {
+        if (token !== runToken) return;
+        box.appendChild(el("div", "demo__msg demo__msg--agent", replyText));
+      }, prefersReduced ? 0 : 450);
     }
 
     function closeAll() {
@@ -389,10 +541,81 @@
     Array.prototype.slice.call(document.querySelectorAll(".demo-replay")).forEach(function (b) {
       b.addEventListener("click", function () { play(b.getAttribute("data-demo")); });
     });
+
+    // OpenClaw free-text chat input
+    var chatInput = document.getElementById("openclaw-input");
+    if (chatInput) chatInput.addEventListener("keydown", function (e) {
+      if (e.key !== "Enter") return;
+      var v = (chatInput.value || "").trim();
+      if (!v) return;
+      chatInput.value = "";
+      routeMessage(v);
+    });
+
+    // Recap control strip: ▶ run now + interval picker
+    var runNow = document.querySelector(".demo-runnow");
+    if (runNow) runNow.addEventListener("click", function () { play("recap"); });
+
+    var intervalSel = document.getElementById("recap-interval");
+    var nextLabel = document.getElementById("recap-next");
+    if (intervalSel) intervalSel.addEventListener("change", function () {
+      recapInterval = intervalSel.value === "weekly" ? "weekly" : "daily";
+      if (nextLabel) nextLabel.textContent = recapInterval === "weekly" ? "Monday 05:00" : "tomorrow 05:00";
+    });
   })();
 
   /* =======================================================================
-     6. Interactive console (delight layer)
+     6. Workflows — CI-style pipeline animations. Nodes light up in order;
+        auto-plays once when a card scrolls into view.
+     ======================================================================= */
+  (function workflowsApp() {
+    var cards = Array.prototype.slice.call(document.querySelectorAll(".wf"));
+    if (!cards.length) return;
+
+    cards.forEach(function (card) {
+      var token = 0;
+      var nodes = Array.prototype.slice.call(card.querySelectorAll(".wf__node"));
+      if (!nodes.length) return;
+
+      function playWf() {
+        token++;
+        var t = token;
+        nodes.forEach(function (n) { n.classList.remove("is-run", "is-done"); });
+        if (prefersReduced) {
+          nodes.forEach(function (n) { n.classList.add("is-done"); });
+          return;
+        }
+        (function step(i) {
+          if (t !== token || i >= nodes.length) return;
+          nodes[i].classList.add("is-run");
+          setTimeout(function () {
+            if (t !== token) return;
+            nodes[i].classList.remove("is-run");
+            nodes[i].classList.add("is-done");
+            step(i + 1);
+          }, 450);
+        })(0);
+      }
+
+      var btn = card.querySelector(".wf-play");
+      if (btn) btn.addEventListener("click", playWf);
+
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function (entries) {
+          if (entries.some(function (e) { return e.isIntersecting; })) {
+            io.disconnect();
+            playWf();
+          }
+        }, { threshold: 0.3 });
+        io.observe(card);
+      } else {
+        playWf();
+      }
+    });
+  })();
+
+  /* =======================================================================
+     7. Interactive console (delight layer)
      ======================================================================= */
   (function consoleApp() {
     var input = document.getElementById("console-input");
@@ -410,6 +633,7 @@
       experience: "experience", exp: "experience",
       projects: "projects", project: "projects",
       repos: "repos", repo: "repos",
+      workflows: "workflows", workflow: "workflows",
       skills: "skills",
       education: "education", edu: "education",
       certs: "certs", certifications: "certs",
@@ -471,8 +695,8 @@
     // every command name run() understands — used by Tab completion
     var COMMANDS = [
       "help", "whoami", "neofetch", "ls", "open", "cd", "goto", "cat",
-      "demo", "repos", "skills", "resume", "email", "linkedin", "github",
-      "contact", "theme", "history", "clear", "date", "echo", "exit"
+      "demo", "repos", "workflows", "skills", "resume", "email", "linkedin",
+      "github", "contact", "theme", "history", "clear", "date", "echo", "exit"
     ];
 
     var NEOFETCH = [
@@ -527,7 +751,7 @@
 
         case "ls":
         case "dir":
-          out("experience/   projects/   repos/   skills.json   education/   certs/   writing.md   contact.json");
+          out("experience/   projects/   repos/   workflows.yml   skills.json   education/   certs/   writing.md   contact.json");
           break;
 
         case "open":

@@ -170,8 +170,14 @@
     function render(repos) {
       var shown = repos.filter(function (r) { return r && !r.fork; }).slice(0, MAX_CARDS);
       if (!shown.length) return;
-      shown.forEach(function (r) {
+      var revealCards = [];
+      shown.forEach(function (r, idx) {
         var card = el("article", "project repo");
+        if (!prefersReduced) {
+          card.classList.add("reveal");
+          card.style.transitionDelay = Math.min(idx * 80, 480) + "ms";
+          revealCards.push(card);
+        }
         var head = el("header", "project__head");
         var title = el("h3", "project__title");
         var link = el("a", "repo__link", r.name);
@@ -193,6 +199,20 @@
         card.appendChild(meta);
         grid.appendChild(card);
       });
+      if (revealCards.length) {
+        // double rAF so the browser paints the hidden state before transitioning
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            revealCards.forEach(function (c) { c.classList.add("is-visible"); });
+            setTimeout(function () {
+              revealCards.forEach(function (c) {
+                c.classList.remove("reveal", "is-visible");
+                c.style.transitionDelay = "";
+              });
+            }, 1300);
+          });
+        });
+      }
     }
 
     function load() {
@@ -615,7 +635,190 @@
   })();
 
   /* =======================================================================
-     7. Interactive console (delight layer)
+     7. Scroll reveal — cards/rows fade-slide in as they enter the viewport,
+        with a small stagger per batch. Classes are only ever added here, so
+        nothing is hidden without JS or under reduced motion.
+     ======================================================================= */
+  (function revealApp() {
+    if (prefersReduced || !("IntersectionObserver" in window)) return;
+
+    var SELECTOR = [
+      ".timeline__item", ".project", ".wf", ".cert",
+      ".contact__row", ".json", ".writing > *", ".badge"
+    ].join(", ");
+    var els = Array.prototype.slice.call(document.querySelectorAll(SELECTOR));
+    if (!els.length) return;
+
+    var io = new IntersectionObserver(function (entries) {
+      var visible = entries.filter(function (e) { return e.isIntersecting; });
+      if (!visible.length) return;
+      visible.sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; });
+      visible.forEach(function (e, i) {
+        var delay = Math.min(i * 70, 420);
+        var target = e.target;
+        target.style.transitionDelay = delay + "ms";
+        target.classList.add("is-visible");
+        io.unobserve(target);
+        // Once revealed, drop the reveal styles entirely so the element's own
+        // hover transitions (e.g. project cards) behave exactly as before.
+        setTimeout(function () {
+          target.classList.remove("reveal", "is-visible");
+          target.style.transitionDelay = "";
+        }, delay + 700);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+
+    els.forEach(function (el) { el.classList.add("reveal"); io.observe(el); });
+  })();
+
+  /* =======================================================================
+     8. Section headers type themselves out the first time they scroll into
+        view — like commands being entered. Headers with extra markup (e.g.
+        the console hint with <code>) are left untouched, and the accessible
+        name is pinned via aria-label so section labels never flicker.
+     ======================================================================= */
+  (function typeCmdApp() {
+    if (prefersReduced || !("IntersectionObserver" in window)) return;
+
+    Array.prototype.slice.call(document.querySelectorAll(".content .cmd")).forEach(function (el) {
+      var prompt = el.querySelector(".cmd__prompt");
+      if (!prompt || el.children.length !== 1) return;
+
+      var full = "";
+      var textNodes = [];
+      Array.prototype.slice.call(el.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) { full += n.textContent; textNodes.push(n); }
+      });
+      full = full.replace(/\s+/g, " ").trim();
+      if (!full) return;
+
+      el.setAttribute("aria-label", full);
+
+      var io = new IntersectionObserver(function (entries) {
+        if (!entries.some(function (e) { return e.isIntersecting; })) return;
+        io.disconnect();
+
+        textNodes.forEach(function (n) { el.removeChild(n); });
+        var textNode = document.createTextNode(" ");
+        el.appendChild(textNode);
+        var caret = document.createElement("span");
+        caret.className = "cmd__caret";
+        caret.setAttribute("aria-hidden", "true");
+        el.appendChild(caret);
+
+        var i = 0;
+        (function step() {
+          if (i <= full.length) {
+            textNode.textContent = " " + full.slice(0, i);
+            i++;
+            setTimeout(step, 26);
+          } else {
+            setTimeout(function () {
+              if (caret.parentNode) caret.parentNode.removeChild(caret);
+            }, 900);
+          }
+        })();
+      }, { threshold: 0.4 });
+      io.observe(el);
+    });
+  })();
+
+  /* =======================================================================
+     9. Count-up — the LinkedIn follower stat ticks from 0 when it scrolls
+        into view.
+     ======================================================================= */
+  (function countUpApp() {
+    var numEl = document.querySelector(".writing__num");
+    if (!numEl || prefersReduced || !("IntersectionObserver" in window)) return;
+
+    var raw = numEl.textContent || "";
+    var target = parseInt(raw.replace(/[^0-9]/g, ""), 10);
+    if (!target) return;
+    var suffix = /\+\s*$/.test(raw) ? "+" : "";
+
+    function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+
+    var io = new IntersectionObserver(function (entries) {
+      if (!entries.some(function (e) { return e.isIntersecting; })) return;
+      io.disconnect();
+      var t0 = null;
+      var DUR = 1300;
+      function frame(ts) {
+        if (t0 === null) t0 = ts;
+        var p = Math.min((ts - t0) / DUR, 1);
+        var eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
+        numEl.textContent = fmt(Math.round(eased * target)) + (p === 1 ? suffix : "");
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }, { threshold: 0.6 });
+    io.observe(numEl);
+  })();
+
+  /* =======================================================================
+     Matrix rain easter egg — started from the console (`matrix`). Draws on
+     a fullscreen canvas in the current theme's accent colour; click or Esc
+     dismisses it, and it fades out on its own after ~10 s.
+     ======================================================================= */
+  function startMatrixRain() {
+    if (document.getElementById("matrix-rain")) return;
+    var canvas = document.createElement("canvas");
+    canvas.id = "matrix-rain";
+    canvas.className = "matrix-canvas";
+    canvas.setAttribute("aria-hidden", "true");
+    document.body.appendChild(canvas);
+    var ctx = canvas.getContext("2d");
+    if (!ctx) { document.body.removeChild(canvas); return; }
+
+    var accent = (getComputedStyle(document.documentElement).getPropertyValue("--accent") || "").trim() || "#5ef2a0";
+    var CHARS = "アイウエオカキクケコサシスセソ0123456789<>/[]{}$#*+=~";
+    var FONT = 16;
+    var cols, drops;
+
+    function size() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      cols = Math.ceil(canvas.width / FONT);
+      drops = [];
+      for (var i = 0; i < cols; i++) drops[i] = Math.floor(Math.random() * -40);
+    }
+    size();
+
+    var alive = true;
+    var timer = setInterval(function () {
+      ctx.fillStyle = "rgba(2, 5, 8, 0.14)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = accent;
+      ctx.font = FONT + "px monospace";
+      for (var i = 0; i < cols; i++) {
+        var ch = CHARS.charAt(Math.floor(Math.random() * CHARS.length));
+        ctx.fillText(ch, i * FONT, drops[i] * FONT);
+        if (drops[i] * FONT > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
+    }, 50);
+
+    function onKey(e) { if (e.key === "Escape") stop(); }
+    function stop() {
+      if (!alive) return;
+      alive = false;
+      clearInterval(timer);
+      window.removeEventListener("resize", size);
+      document.removeEventListener("keydown", onKey);
+      canvas.classList.add("is-off");
+      setTimeout(function () {
+        if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
+      }, 550);
+    }
+
+    canvas.addEventListener("click", stop);
+    document.addEventListener("keydown", onKey);
+    window.addEventListener("resize", size);
+    setTimeout(stop, 10000);
+  }
+
+  /* =======================================================================
+     10. Interactive console (delight layer)
      ======================================================================= */
   (function consoleApp() {
     var input = document.getElementById("console-input");
@@ -689,14 +892,15 @@
       "  history         commands you've typed here",
       "  clear           clear this console",
       "",
-      "tip: Tab autocompletes, ↑/↓ browse history"
+      "tip: Tab autocompletes, ↑/↓ browse history — and one command isn't listed 👀"
     ].join("\n");
 
     // every command name run() understands — used by Tab completion
     var COMMANDS = [
       "help", "whoami", "neofetch", "ls", "open", "cd", "goto", "cat",
       "demo", "repos", "workflows", "skills", "resume", "email", "linkedin",
-      "github", "contact", "theme", "history", "clear", "date", "echo", "exit"
+      "github", "contact", "theme", "history", "clear", "date", "echo", "exit",
+      "matrix"
     ];
 
     var NEOFETCH = [
@@ -827,6 +1031,15 @@
 
         case "sudo":
           out("nice try 😄 — permission denied.", "line-err"); break;
+
+        case "matrix":
+          if (prefersReduced) {
+            out("matrix: reduced motion is on — the rain stays imaginary 🌧");
+          } else {
+            out("wake up, neo… (click or press Esc to exit)");
+            startMatrixRain();
+          }
+          break;
 
         case "date":
           out(new Date().toString()); break;

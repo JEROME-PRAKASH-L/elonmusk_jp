@@ -22,7 +22,7 @@ so it drops straight onto GitHub Pages, Netlify, Vercel, or any static host.
 |------|---------|
 | `index.html` | Markup + all content (incl. JSON-LD structured data) |
 | `styles.css` | Theme, layout, responsive, terminal aesthetic |
-| `script.js`  | Active-nav, theme toggle, typed name, interactive console |
+| `script.js`  | Active-nav, theme toggle, typed name, scroll reveals, interactive console |
 | `404.html`   | Terminal-styled "file not found" page (GitHub Pages picks it up automatically) |
 | `robots.txt` / `sitemap.xml` | Crawler hints for search engines |
 | `Jerome_Prakash_L_Resume.pdf` | Linked from the sidebar (`↓ resume.pdf`) |
@@ -48,6 +48,12 @@ so it drops straight onto GitHub Pages, Netlify, Vercel, or any static host.
 - **Workflows section.** `cat ./workflows.yml` shows the two automation
   pipelines as CI-style diagrams whose nodes light up in sequence — auto-plays
   when scrolled into view, replayable per card.
+- **Animation layer.** A CRT power-on flicker when the page loads, section
+  headers that type themselves out as you scroll, scroll-reveal cards with a
+  stagger, a count-up follower stat, a breathing avatar glow, and hover
+  micro-interactions (nav arrows, traffic lights, tags, button sheen). There's
+  also a hidden `matrix` console command 🌧. All motion is skipped under
+  `prefers-reduced-motion`, and nothing is hidden when JavaScript is off.
 - **Two themes** — phosphor green (default) and amber — toggle in the title bar,
   remembered via `localStorage`.
 - **Accessible & responsive** — semantic landmarks, keyboard focus rings, a skip

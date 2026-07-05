@@ -38,7 +38,9 @@ so it drops straight onto GitHub Pages, Netlify, Vercel, or any static host.
   hour, forks filtered out). If JavaScript is off or the API is unavailable,
   a plain link to the GitHub profile remains.
 - **Project demos.** Each project card has a "▶ run demo" button that plays a
-  simulated replay in-page. The OpenClaw demo is interactive: the agent offers
+  simulated replay in-page — and the OpenClaw demo also **auto-plays once**
+  when the project cards first scroll into view (unless the visitor already
+  opened a demo, or prefers reduced motion). The OpenClaw demo is interactive: the agent offers
   `1. Todo app · 2. Login page · 3. Python chatbot`, and each choice builds a
   *working* mini-app in the chat (tick off todos, sign in, chat with the bot) —
   visitors can also type their own message into the chat input. The inbox-recap

@@ -538,23 +538,42 @@
       openId = null;
     }
 
-    function open(id) {
+    function open(id, noScroll) {
       var panel = document.getElementById("demo-" + id);
       if (!panel) return;
       closeAll();
       panel.hidden = false;
       openId = id;
       play(id);
-      panel.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "nearest" });
+      if (!noScroll) panel.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "nearest" });
     }
+
+    var userTouched = false; // once the visitor opens/closes a demo, auto-play backs off
 
     toggles.forEach(function (t) {
       t.addEventListener("click", function () {
+        userTouched = true;
         var id = t.getAttribute("data-demo");
         if (openId === id) closeAll();
         else open(id);
       });
     });
+
+    // Auto-run: play the OpenClaw demo once when the project cards scroll
+    // into view — no click needed. Skipped under reduced motion (demos stay
+    // opt-in there) and never fights a demo the visitor already opened.
+    if (!prefersReduced && "IntersectionObserver" in window) {
+      var projGrid = document.querySelector("#projects .projects");
+      if (projGrid) {
+        var autoIo = new IntersectionObserver(function (entries) {
+          if (!entries.some(function (e) { return e.isIntersecting; })) return;
+          autoIo.disconnect();
+          if (userTouched || openId) return;
+          open("openclaw", true); // open in place, don't yank the scroll position
+        }, { threshold: 0.4 });
+        autoIo.observe(projGrid);
+      }
+    }
     Array.prototype.slice.call(document.querySelectorAll(".demo-close")).forEach(function (b) {
       b.addEventListener("click", closeAll);
     });

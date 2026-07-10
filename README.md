@@ -37,6 +37,11 @@ so it drops straight onto GitHub Pages, Netlify, Vercel, or any static host.
   the GitHub API when it scrolls into view (cached in `sessionStorage` for an
   hour, forks filtered out). If JavaScript is off or the API is unavailable,
   a plain link to the GitHub profile remains.
+- **Private contact form.** The terminal-styled form writes messages to
+  Supabase through a publishable browser key. Explicit grants and Row Level
+  Security allow anonymous inserts only—visitors cannot list, edit, or delete
+  submissions. Client-side validation, a honeypot, and a short cooldown reduce
+  accidental duplicate and automated submissions.
 - **Project demos.** Each project card has a "▶ run demo" button that plays a
   simulated replay in-page — and the OpenClaw demo also **auto-plays once**
   when the project cards first scroll into view (unless the visitor already

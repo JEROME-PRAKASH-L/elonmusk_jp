@@ -259,6 +259,101 @@
   })();
 
   /* =======================================================================
+     4b. Supabase contact form
+     Uses a publishable browser key. RLS allows anonymous INSERT only;
+     visitors cannot read, update, or delete contact messages.
+     ======================================================================= */
+  (function contactFormApp() {
+    var form = document.getElementById("contact-form");
+    if (!form || !window.fetch) return;
+
+    var submit = form.querySelector(".contact-form__submit");
+    var status = document.getElementById("contact-form-status");
+    var API_URL = "https://nhtjzypgeueqgnjkpilq.supabase.co/rest/v1/contact_messages";
+    var PUBLISHABLE_KEY = "sb_publishable_59mMwChQdUbZaeMvnSitvQ_cMlrr87v";
+    var LAST_SENT_KEY = "jp-contact-last-sent";
+    var COOLDOWN_MS = 30000;
+
+    function setStatus(message, kind) {
+      if (!status) return;
+      status.textContent = message;
+      status.classList.remove("is-success", "is-error");
+      if (kind) status.classList.add("is-" + kind);
+    }
+
+    function value(name) {
+      var field = form.elements[name];
+      return field ? String(field.value || "").trim() : "";
+    }
+
+    function recentlySent() {
+      try {
+        var last = Number(localStorage.getItem(LAST_SENT_KEY) || 0);
+        return last && Date.now() - last < COOLDOWN_MS;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      // Honeypot: bots commonly fill hidden fields. Return a harmless success.
+      if (value("company")) {
+        form.reset();
+        setStatus("message sent — thank you.", "success");
+        return;
+      }
+
+      if (recentlySent()) {
+        setStatus("please wait a moment before sending another message.", "error");
+        return;
+      }
+
+      var payload = {
+        name: value("name"),
+        email: value("email"),
+        subject: value("subject"),
+        message: value("message")
+      };
+
+      submit.disabled = true;
+      submit.setAttribute("aria-busy", "true");
+      submit.textContent = "sending…";
+      setStatus("connecting securely…");
+
+      fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "apikey": PUBLISHABLE_KEY,
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error("contact insert failed");
+          form.reset();
+          try { localStorage.setItem(LAST_SENT_KEY, String(Date.now())); } catch (e) {}
+          setStatus("message sent — Jerome will get back to you.", "success");
+        })
+        .catch(function () {
+          setStatus("could not send. Please use the email link beside the form.", "error");
+        })
+        .then(function () {
+          submit.disabled = false;
+          submit.removeAttribute("aria-busy");
+          submit.textContent = "send message →";
+        });
+    });
+  })();
+
+  /* =======================================================================
      5. Project demos — simulated replays of OpenClaw & the inbox recap.
      All demo text is our own static strings; the login preview is cloned
      from a <template> in index.html. A run token cancels stale playback.

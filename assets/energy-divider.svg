@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="24" viewBox="0 0 1200 24" role="img" aria-label="Animated arc energy divider">
+  <defs>
+    <linearGradient id="dividerLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7b1117" stop-opacity="0"/>
+      <stop offset="0.18" stop-color="#a41d23"/>
+      <stop offset="0.42" stop-color="#f6c453"/>
+      <stop offset="0.5" stop-color="#5fffea"/>
+      <stop offset="0.58" stop-color="#f6c453"/>
+      <stop offset="0.82" stop-color="#a41d23"/>
+      <stop offset="1" stop-color="#7b1117" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="dividerGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect x="10" y="11" width="1180" height="2" rx="1" fill="url(#dividerLine)" opacity="0.75">
+    <animate attributeName="opacity" values="0.55;0.9;0.55" dur="3.4s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+  </rect>
+
+  <path d="M20 12H560" stroke="#3ae8ff" stroke-width="2" stroke-linecap="round" stroke-dasharray="26 514" opacity="0.85" filter="url(#dividerGlow)">
+    <animate attributeName="stroke-dashoffset" values="540;0" dur="4.6s" repeatCount="indefinite"/>
+  </path>
+  <path d="M1180 12H640" stroke="#f6c453" stroke-width="2" stroke-linecap="round" stroke-dasharray="26 514" opacity="0.85" filter="url(#dividerGlow)">
+    <animate attributeName="stroke-dashoffset" values="540;0" dur="4.6s" begin="0.4s" repeatCount="indefinite"/>
+  </path>
+
+  <path d="M600 4L608 12L600 20L592 12Z" fill="#060d13" stroke="#3ae8ff" stroke-width="1.6" filter="url(#dividerGlow)">
+    <animate attributeName="stroke" values="#3ae8ff;#5fffea;#f6c453;#3ae8ff" dur="6s" repeatCount="indefinite"/>
+  </path>
+  <circle cx="600" cy="12" r="2.2" fill="#5fffea" filter="url(#dividerGlow)">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1.6s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+  </circle>
+
+  <circle cx="577" cy="12" r="1.6" fill="#3ae8ff">
+    <animate attributeName="opacity" values="0.2;0.9;0.2" dur="2.2s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="623" cy="12" r="1.6" fill="#f6c453">
+    <animate attributeName="opacity" values="0.9;0.2;0.9" dur="2.2s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+  </circle>
+</svg>

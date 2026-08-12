@@ -1,14 +1,15 @@
-# Jerome Prakash L — Terminal Portfolio
+# Jerome Prakash L — J.A.R.V.I.S. Terminal Portfolio
 
-A single-page developer portfolio styled as a **terminal / file-system OS**.
+A single-page developer portfolio combining a **J.A.R.V.I.S. / Arc Reactor HUD** with a terminal-style file-system interface.
 Built from my résumé. Pure HTML + CSS + JavaScript — **no build step, no dependencies**,
 so it drops straight onto GitHub Pages, Netlify, Vercel, or any static host.
 
 ```
 ~/jerome
  > whoami        about + focus areas
+ > jarvis        system profile + reactor status
  > experience    timeline
- > projects      AI Daily Inbox Recap · OpenClaw
+ > projects      8 featured AI, full-stack, data, and computer-vision builds
  > skills        skills.json
  > education      DMI College of Engineering
  > certs         certifications
@@ -23,6 +24,8 @@ so it drops straight onto GitHub Pages, Netlify, Vercel, or any static host.
 | `index.html` | Markup + all content (incl. JSON-LD structured data) |
 | `styles.css` | Theme, layout, responsive, terminal aesthetic |
 | `script.js`  | Active-nav, theme toggle, typed name, scroll reveals, interactive console |
+| `assets/profile-banner.svg` | Animated J.A.R.V.I.S. / Arc Reactor hero shared with the GitHub profile |
+| `assets/energy-divider.svg` | Animated HUD energy separator |
 | `404.html`   | Terminal-styled "file not found" page (GitHub Pages picks it up automatically) |
 | `robots.txt` / `sitemap.xml` | Crawler hints for search engines |
 | `Jerome_Prakash_L_Resume.pdf` | Linked from the sidebar (`↓ resume.pdf`) |
@@ -61,7 +64,7 @@ so it drops straight onto GitHub Pages, Netlify, Vercel, or any static host.
   micro-interactions (nav arrows, traffic lights, tags, button sheen). There's
   also a hidden `matrix` console command 🌧. All motion is skipped under
   `prefers-reduced-motion`, and nothing is hidden when JavaScript is off.
-- **Two themes** — phosphor green (default) and amber — toggle in the title bar,
+- **Two themes** — Arc Reactor cyan (default) and armor gold/red — toggle in the title bar,
   remembered via `localStorage`.
 - **Accessible & responsive** — semantic landmarks, keyboard focus rings, a skip
   link, AA-contrast colors, and honors `prefers-reduced-motion` / `prefers-contrast`.

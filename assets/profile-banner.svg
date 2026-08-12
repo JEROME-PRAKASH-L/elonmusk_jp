@@ -1,0 +1,937 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Jerome Prakash L — Mark JPL-26 Silk Flight V10 HUD</title>
+  <desc id="desc">A narrative JARVIS and Arc Reactor developer banner where Jerome Prakash L digitally decodes, rotates through futuristic, analysis, and armor typography modes, and synchronizes cyan, white, and gold reactor energy while silk-smooth eased motion drives a hovering reactor, aurora ribbons, floating holo-hexagons, drifting starfield, shooting stars, armor glints, and comet orbits around the Idea to Build to Launch mission.</desc>
+
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#030508"/>
+      <stop offset="0.5" stop-color="#090b11"/>
+      <stop offset="1" stop-color="#02060a"/>
+    </linearGradient>
+    <linearGradient id="armorRed" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b0608"/>
+      <stop offset="0.45" stop-color="#a41d23"/>
+      <stop offset="0.72" stop-color="#5c0b10"/>
+      <stop offset="1" stop-color="#210306"/>
+    </linearGradient>
+    <linearGradient id="armorGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff1a6"/>
+      <stop offset="0.36" stop-color="#f6c453"/>
+      <stop offset="0.68" stop-color="#b56d16"/>
+      <stop offset="1" stop-color="#6e3508"/>
+    </linearGradient>
+    <linearGradient id="energyLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7b1117"/>
+      <stop offset="0.28" stop-color="#f6c453"/>
+      <stop offset="0.62" stop-color="#2be7ff"/>
+      <stop offset="1" stop-color="#0b6688"/>
+    </linearGradient>
+    <linearGradient id="nameEnergySweep" gradientUnits="userSpaceOnUse" x1="-280" y1="0" x2="-10" y2="0">
+      <stop offset="0" stop-color="#25e9ff" stop-opacity="0"/>
+      <stop offset="0.28" stop-color="#25e9ff" stop-opacity="0.2"/>
+      <stop offset="0.46" stop-color="#73f5ff"/>
+      <stop offset="0.56" stop-color="#ffffff"/>
+      <stop offset="0.7" stop-color="#f6c453"/>
+      <stop offset="1" stop-color="#f6c453" stop-opacity="0"/>
+      <animate attributeName="x1" values="-280;-280;620;620" keyTimes="0;0.12;0.28;1" dur="20s" begin="3s" calcMode="spline" keySplines="0 0 1 1;0.42 0 0.58 1;0 0 1 1" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="-10;-10;890;890" keyTimes="0;0.12;0.28;1" dur="20s" begin="3s" calcMode="spline" keySplines="0 0 1 1;0.42 0 0.58 1;0 0 1 1" repeatCount="indefinite"/>
+    </linearGradient>
+    <radialGradient id="arcCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.18" stop-color="#d9fcff">
+        <animate attributeName="stop-color" values="#d9fcff;#d9fcff;#ffffff;#ffe49a;#ffe49a;#d9fcff" keyTimes="0;0.47;0.58;0.66;0.72;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="0.42" stop-color="#35edff">
+        <animate attributeName="stop-color" values="#35edff;#35edff;#ffffff;#f6c453;#f6c453;#35edff" keyTimes="0;0.47;0.58;0.66;0.72;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="0.72" stop-color="#087b9d">
+        <animate attributeName="stop-color" values="#087b9d;#087b9d;#48eaff;#b56d16;#b56d16;#087b9d" keyTimes="0;0.47;0.58;0.66;0.72;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="1" stop-color="#031018"/>
+    </radialGradient>
+    <radialGradient id="reactorAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#33ebff" stop-opacity="0.44"/>
+      <stop offset="0.4" stop-color="#159fbd" stop-opacity="0.16"/>
+      <stop offset="0.72" stop-color="#9b171d" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="microGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0H0V30" fill="none" stroke="#123342" stroke-width="1" stroke-opacity="0.28"/>
+    </pattern>
+    <pattern id="scanLines" width="6" height="6" patternUnits="userSpaceOnUse">
+      <path d="M0 1H1200" stroke="#42eaff" stroke-width="1" stroke-opacity="0.035"/>
+    </pattern>
+    <filter id="cyanGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="goldGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+    <linearGradient id="armorGlint" x1="0" y1="0" x2="1" y2="0.35">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#fff6dc" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="armorTopLeft">
+      <path d="M0 0H430L378 62H188L150 100H0Z"/>
+    </clipPath>
+    <clipPath id="armorTopRight">
+      <path d="M1200 0H902L936 52H1082L1126 98H1200Z"/>
+    </clipPath>
+    <clipPath id="armorBottomLeft">
+      <path d="M0 420H462L398 354H212L158 306H0Z"/>
+    </clipPath>
+    <clipPath id="frame">
+      <rect width="1200" height="420" rx="28"/>
+    </clipPath>
+    <clipPath id="nameReveal" clipPathUnits="userSpaceOnUse">
+      <rect x="0" y="88" width="590" height="62">
+        <animate attributeName="width" from="0" to="590" dur="2.2s" begin="0s" fill="freeze"/>
+      </rect>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="420" fill="url(#background)"/>
+    <rect width="1200" height="420" fill="url(#microGrid)"/>
+    <rect width="1200" height="420" fill="url(#scanLines)"/>
+
+    <!-- V9 drifting starfield with slow parallax and twinkle -->
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 0;-16 3;0 0" dur="34s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      <g fill="#9fe9ff">
+        <circle cx="332" cy="58" r="1.4"><animate attributeName="opacity" values="0.15;0.75;0.15" dur="3.1s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/></circle>
+        <circle cx="558" cy="96" r="1.2"><animate attributeName="opacity" values="0.7;0.12;0.7" dur="4.4s" begin="0.6s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/></circle>
+        <circle cx="642" cy="44" r="1.6"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="2.7s" begin="1.1s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/></circle>
+        <circle cx="826" cy="118" r="1.3"><animate attributeName="opacity" values="0.65;0.15;0.65" dur="3.8s" begin="0.3s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/></circle>
+        <circle cx="872" cy="58" r="1.1"><animate attributeName="opacity" values="0.2;0.7;0.2" dur="4.9s" begin="1.7s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/></circle>
+        <circle cx="497" cy="322" r="1.3"><animate attributeName="opacity" values="0.15;0.7;0.15" dur="3.4s" begin="0.9s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/></circle>
+        <circle cx="612" cy="338" r="1.5"><animate attributeName="opacity" values="0.7;0.18;0.7" dur="2.9s" begin="2.1s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/></circle>
+        <circle cx="768" cy="296" r="1.2"><animate attributeName="opacity" values="0.2;0.75;0.2" dur="4.1s" begin="1.4s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/></circle>
+      </g>
+      <g fill="#ffe9a6">
+        <circle cx="446" cy="126" r="1.2"><animate attributeName="opacity" values="0.12;0.6;0.12" dur="3.6s" begin="0.5s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/></circle>
+        <circle cx="704" cy="128" r="1.1"><animate attributeName="opacity" values="0.55;0.12;0.55" dur="4.6s" begin="1.9s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/></circle>
+        <circle cx="548" cy="368" r="1.3"><animate attributeName="opacity" values="0.15;0.6;0.15" dur="3.2s" begin="2.4s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/></circle>
+        <circle cx="854" cy="342" r="1.1"><animate attributeName="opacity" values="0.55;0.1;0.55" dur="4s" begin="0.8s" repeatCount="indefinite"/></circle>
+      </g>
+    </g>
+
+    <!-- V9 periodic shooting stars streaking behind the HUD panels -->
+    <g opacity="0" filter="url(#cyanGlow)">
+      <path d="M-30 0L0 0" stroke="#c9f8ff" stroke-width="2" stroke-linecap="round"/>
+      <animateMotion path="M462 34L652 132" keyPoints="0;1;1" keyTimes="0;0.07;1" calcMode="linear" rotate="auto" dur="19s" begin="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.9;0;0" keyTimes="0;0.03;0.07;1" dur="19s" begin="5s" repeatCount="indefinite"/>
+    </g>
+    <g opacity="0" filter="url(#cyanGlow)">
+      <path d="M-26 0L0 0" stroke="#ffe9ae" stroke-width="1.8" stroke-linecap="round"/>
+      <animateMotion path="M884 292L738 386" keyPoints="0;1;1" keyTimes="0;0.06;1" calcMode="linear" rotate="auto" dur="23s" begin="13s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.8;0;0" keyTimes="0;0.025;0.06;1" dur="23s" begin="13s" repeatCount="indefinite"/>
+    </g>
+
+    <!-- V10 aurora energy ribbons flowing through the upper sky -->
+    <g fill="none" stroke-linecap="round">
+      <path d="M300 100C480 84 700 122 900 96" stroke="url(#energyLine)" stroke-width="1.3" stroke-dasharray="42 30" opacity="0.26">
+        <animate attributeName="stroke-dashoffset" values="0;-288" dur="9s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.14;0.36;0.14" dur="6s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      </path>
+      <path d="M320 110C500 96 690 130 880 106" stroke="#f1c762" stroke-width="1" stroke-dasharray="26 40" opacity="0.14">
+        <animate attributeName="stroke-dashoffset" values="0;264" dur="11s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.08;0.24;0.08" dur="7s" begin="1.5s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      </path>
+    </g>
+
+    <!-- V10 floating holo-hexagons with silk-eased bobbing -->
+    <g fill="none" stroke="#2fd7ef">
+      <g transform="translate(620 106)" opacity="0.4">
+        <path d="M0-15L13-7.5V7.5L0 15L-13 7.5V-7.5Z" stroke-width="1.4"/>
+        <circle r="2" fill="#2fd7ef" stroke="none"/>
+        <animateTransform attributeName="transform" type="translate" additive="sum" values="0 0;0 -7;0 0" dur="5.6s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.24;0.5;0.24" dur="5.6s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      </g>
+      <g transform="translate(838 158)" opacity="0.35">
+        <path d="M0-10L8.7-5V5L0 10L-8.7 5V-5Z" stroke-width="1.2"/>
+        <animateTransform attributeName="transform" type="translate" additive="sum" values="0 0;0 6;0 0" dur="6.8s" begin="1.2s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.2;0.45;0.2" dur="6.8s" begin="1.2s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      </g>
+      <g transform="translate(795 330)" opacity="0.35" stroke="#e8bd55">
+        <path d="M0-12L10.4-6V6L0 12L-10.4 6V-6Z" stroke-width="1.2"/>
+        <circle r="1.6" fill="#e8bd55" stroke="none"/>
+        <animateTransform attributeName="transform" type="translate" additive="sum" values="0 0;0 -5;0 0" dur="7.4s" begin="2.3s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.18;0.42;0.18" dur="7.4s" begin="2.3s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      </g>
+    </g>
+
+    <!-- Metallic armor shell -->
+    <path d="M0 0H430L378 62H188L150 100H0Z" fill="url(#armorRed)" opacity="0.92"/>
+    <path d="M0 420H462L398 354H212L158 306H0Z" fill="url(#armorRed)" opacity="0.84"/>
+    <path d="M1200 0H902L936 52H1082L1126 98H1200Z" fill="url(#armorRed)" opacity="0.88"/>
+    <path d="M1200 420H875L920 364H1070L1120 310H1200Z" fill="url(#armorRed)" opacity="0.9"/>
+    <path d="M0 102H151L183 70H372" fill="none" stroke="url(#armorGold)" stroke-width="4"/>
+    <path d="M0 306H157L210 355H397" fill="none" stroke="url(#armorGold)" stroke-width="4"/>
+    <path d="M1200 99H1128L1080 53H937" fill="none" stroke="url(#armorGold)" stroke-width="4"/>
+    <path d="M1200 309H1122L1068 364H920" fill="none" stroke="url(#armorGold)" stroke-width="4"/>
+
+    <!-- V9 specular glints sweeping across the armor plating -->
+    <g clip-path="url(#armorTopLeft)" opacity="0.8">
+      <rect x="-180" y="-30" width="76" height="180" fill="url(#armorGlint)" transform="skewX(-24)">
+        <animate attributeName="x" values="-180;-180;560;560" keyTimes="0;0.04;0.2;1" dur="12s" calcMode="spline" keySplines="0 0 1 1;0.42 0 0.58 1;0 0 1 1" repeatCount="indefinite"/>
+      </rect>
+    </g>
+    <g clip-path="url(#armorTopRight)" opacity="0.8">
+      <rect x="1300" y="-30" width="76" height="180" fill="url(#armorGlint)" transform="skewX(24)">
+        <animate attributeName="x" values="1300;1300;780;780" keyTimes="0;0.04;0.2;1" dur="12s" begin="4s" calcMode="spline" keySplines="0 0 1 1;0.42 0 0.58 1;0 0 1 1" repeatCount="indefinite"/>
+      </rect>
+    </g>
+    <g clip-path="url(#armorBottomLeft)" opacity="0.7">
+      <rect x="-320" y="280" width="76" height="180" fill="url(#armorGlint)" transform="skewX(-24)">
+        <animate attributeName="x" values="-320;-320;700;700" keyTimes="0;0.04;0.2;1" dur="12s" begin="8s" calcMode="spline" keySplines="0 0 1 1;0.42 0 0.58 1;0 0 1 1" repeatCount="indefinite"/>
+      </rect>
+    </g>
+
+    <!-- Blue holographic circuit field -->
+    <g fill="none" stroke="#27dff7" stroke-width="1.4" opacity="0.46">
+      <path d="M0 138H92L122 168H300"/>
+      <path d="M0 278H74L112 240H286"/>
+      <path d="M370 0V35L398 63V112"/>
+      <path d="M736 0V36L706 66V105"/>
+      <path d="M738 420V386L704 352V320"/>
+      <path d="M1200 142H1154L1121 175H1085"/>
+      <path d="M1200 278H1160L1124 242H1083"/>
+    </g>
+
+    <!-- Flowing energy through the HUD circuits -->
+    <g fill="none" stroke-linecap="round" stroke-width="2.4" opacity="0.9" filter="url(#cyanGlow)">
+      <path d="M0 138H92L122 168H300" stroke="#45efff" stroke-dasharray="22 220">
+        <animate attributeName="stroke-dashoffset" values="0;-484" dur="4.8s" repeatCount="indefinite"/>
+      </path>
+      <path d="M0 278H74L112 240H286" stroke="#f1c762" stroke-dasharray="18 210">
+        <animate attributeName="stroke-dashoffset" values="0;-456" dur="5.6s" begin="0.8s" repeatCount="indefinite"/>
+      </path>
+      <path d="M370 0V35L398 63V112" stroke="#45efff" stroke-dasharray="15 150">
+        <animate attributeName="stroke-dashoffset" values="0;-330" dur="3.8s" begin="0.4s" repeatCount="indefinite"/>
+      </path>
+      <path d="M736 0V36L706 66V105" stroke="#45efff" stroke-dasharray="15 150">
+        <animate attributeName="stroke-dashoffset" values="0;-330" dur="4.2s" begin="1.1s" repeatCount="indefinite"/>
+      </path>
+      <path d="M1200 278H1160L1124 242H1083" stroke="#f1c762" stroke-dasharray="16 160">
+        <animate attributeName="stroke-dashoffset" values="0;352" dur="4.6s" begin="0.6s" repeatCount="indefinite"/>
+      </path>
+    </g>
+
+    <g fill="#45eeff" filter="url(#cyanGlow)">
+      <circle cx="122" cy="168" r="3"/>
+      <circle cx="112" cy="240" r="3"/>
+      <circle cx="398" cy="63" r="3"/>
+      <circle cx="706" cy="66" r="3"/>
+      <circle cx="704" cy="352" r="3"/>
+      <circle cx="1121" cy="175" r="3"/>
+      <circle cx="1124" cy="242" r="3"/>
+    </g>
+
+    <!-- Mark JPL-26 live diagnostics -->
+    <g transform="translate(438 17)" font-family="Consolas, monospace" font-size="9" font-weight="700" letter-spacing="1.4">
+      <g>
+        <path d="M0 0H102L111 9V27H0Z" fill="#081017" stroke="#8e171c" stroke-width="1.2"/>
+        <circle cx="12" cy="14" r="3" fill="#f3c65c" filter="url(#goldGlow)">
+          <animate attributeName="opacity" values="0.3;1;0.3" dur="1.4s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </circle>
+        <text x="24" y="18" fill="#f6d37c">CORE 100%</text>
+      </g>
+      <g transform="translate(119)">
+        <path d="M0 0H118L127 9V27H0Z" fill="#07131a" stroke="#1abbd2" stroke-width="1.2"/>
+        <circle cx="12" cy="14" r="3" fill="#42efff" filter="url(#cyanGlow)">
+          <animate attributeName="opacity" values="1;0.25;1" dur="1.1s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </circle>
+        <text x="24" y="18" fill="#8af6ff">AI LINK ACTIVE</text>
+      </g>
+      <g transform="translate(254)">
+        <path d="M0 0H102L111 9V27H0Z" fill="#081017" stroke="#8e171c" stroke-width="1.2"/>
+        <circle cx="12" cy="14" r="3" fill="#53f2ff" filter="url(#cyanGlow)">
+          <animate attributeName="opacity" values="0.25;1;0.25" dur="1.8s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </circle>
+        <text x="24" y="18" fill="#d8fbff">BUILD MODE</text>
+      </g>
+    </g>
+
+    <!-- One-time JARVIS boot sequence over the diagnostics strip -->
+    <g transform="translate(438 17)" font-family="Consolas, monospace" font-size="9" font-weight="700" letter-spacing="1.3" opacity="0">
+      <animate attributeName="opacity" values="1;1;0" keyTimes="0;0.88;1" dur="2.9s" begin="0s" fill="freeze"/>
+      <path d="M0 0H356L365 9V27H0Z" fill="#050b10" stroke="#39e8fb" stroke-width="1.2"/>
+      <rect x="0" y="25" width="0" height="2" fill="url(#energyLine)">
+        <animate attributeName="width" from="0" to="365" dur="2.55s" begin="0s" fill="freeze"/>
+      </rect>
+      <text x="15" y="18" fill="#f4cd6b" opacity="0">
+        BOOT 01 // ARC CORE INITIALIZING
+        <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.27;0.32;1" dur="2.55s" begin="0s" fill="freeze"/>
+      </text>
+      <text x="15" y="18" fill="#75f4ff" opacity="0">
+        BOOT 02 // J.A.R.V.I.S. CONNECTING
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.28;0.33;0.58;0.63;1" dur="2.55s" begin="0s" fill="freeze"/>
+      </text>
+      <text x="15" y="18" fill="#c9fbff" opacity="0">
+        BOOT 03 // SYSTEMS NOMINAL
+        <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.59;0.64;1" dur="2.55s" begin="0s" fill="freeze"/>
+      </text>
+    </g>
+
+    <!-- Final V6 story state -->
+    <g transform="translate(438 17)" font-family="Consolas, monospace" font-size="9" font-weight="700" letter-spacing="1.2" opacity="0">
+      <path d="M0 0H356L365 9V27H0Z" fill="#041017" stroke="#5df3ff" stroke-width="1.4" filter="url(#cyanGlow)"/>
+      <circle cx="15" cy="14" r="4" fill="#f5c85f" filter="url(#goldGlow)"/>
+      <text x="28" y="18" fill="#d9fcff">MISSION COMPLETE // SYSTEM DEPLOYED</text>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.81;0.84;0.94;0.97;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+    </g>
+
+    <!-- JARVIS live voice/data waveform -->
+    <g transform="translate(438 55)" font-family="Consolas, monospace">
+      <path d="M0 0H350L365 15V33H0Z" fill="#061017" fill-opacity="0.84" stroke="#135e70" stroke-width="1.1"/>
+      <g font-size="9" font-weight="700" letter-spacing="1.3">
+        <text x="14" y="21" fill="#f1cb67">JARVIS CMD //</text>
+        <text x="102" y="21" fill="#84f6ff" opacity="1">
+          SCAN
+          <animate attributeName="opacity" values="1;1;0;0;0;1" keyTimes="0;0.21;0.26;0.93;0.98;1" dur="12s" repeatCount="indefinite"/>
+        </text>
+        <text x="102" y="21" fill="#84f6ff" opacity="0">
+          BUILD
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.21;0.26;0.46;0.51;1" dur="12s" repeatCount="indefinite"/>
+        </text>
+        <text x="102" y="21" fill="#84f6ff" opacity="0">
+          TEST
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.46;0.51;0.71;0.76;1" dur="12s" repeatCount="indefinite"/>
+        </text>
+        <text x="102" y="21" fill="#84f6ff" opacity="0">
+          DEPLOY
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.71;0.76;0.93;0.98;1" dur="12s" repeatCount="indefinite"/>
+        </text>
+        <rect x="141" y="13" width="5" height="10" fill="#84f6ff">
+          <animate attributeName="opacity" values="1;0" calcMode="discrete" dur="1.06s" repeatCount="indefinite"/>
+        </rect>
+      </g>
+      <g opacity="0">
+        <rect x="84" y="5" width="74" height="23" rx="3" fill="#061017" stroke="#f1c762" stroke-width="1"/>
+        <text x="91" y="20" fill="#f8d978" font-size="8" font-weight="700" letter-spacing="1">PROTO ACTIVE</text>
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.29;0.32;0.55;0.59;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      </g>
+      <g fill="#45efff" filter="url(#cyanGlow)" opacity="0.9">
+        <rect x="160" y="11" width="4" height="10" rx="2">
+          <animate attributeName="y" values="11;4;9;11" dur="1.35s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+          <animate attributeName="height" values="10;24;14;10" dur="1.35s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </rect>
+        <rect x="180" y="7" width="4" height="18" rx="2">
+          <animate attributeName="y" values="7;12;3;7" dur="1.7s" begin="0.15s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+          <animate attributeName="height" values="18;8;26;18" dur="1.7s" begin="0.15s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </rect>
+        <rect x="200" y="10" width="4" height="12" rx="2">
+          <animate attributeName="y" values="10;2;8;10" dur="1.2s" begin="0.3s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+          <animate attributeName="height" values="12;28;16;12" dur="1.2s" begin="0.3s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </rect>
+        <rect x="220" y="5" width="4" height="22" rx="2">
+          <animate attributeName="y" values="5;11;1;5" dur="1.85s" begin="0.05s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+          <animate attributeName="height" values="22;10;30;22" dur="1.85s" begin="0.05s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </rect>
+        <rect x="240" y="9" width="4" height="14" rx="2">
+          <animate attributeName="y" values="9;3;12;9" dur="1.45s" begin="0.4s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+          <animate attributeName="height" values="14;26;8;14" dur="1.45s" begin="0.4s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </rect>
+        <rect x="260" y="4" width="4" height="24" rx="2">
+          <animate attributeName="y" values="4;9;2;4" dur="1.6s" begin="0.2s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+          <animate attributeName="height" values="24;14;28;24" dur="1.6s" begin="0.2s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </rect>
+        <rect x="280" y="10" width="4" height="12" rx="2">
+          <animate attributeName="y" values="10;1;7;10" dur="1.25s" begin="0.1s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+          <animate attributeName="height" values="12;30;18;12" dur="1.25s" begin="0.1s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </rect>
+        <rect x="300" y="7" width="4" height="18" rx="2">
+          <animate attributeName="y" values="7;12;4;7" dur="1.75s" begin="0.35s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+          <animate attributeName="height" values="18;8;24;18" dur="1.75s" begin="0.35s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </rect>
+        <rect x="320" y="11" width="4" height="10" rx="2">
+          <animate attributeName="y" values="11;5;9;11" dur="1.4s" begin="0.25s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+          <animate attributeName="height" values="10;22;14;10" dur="1.4s" begin="0.25s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </rect>
+      </g>
+      <circle cx="344" cy="16" r="3" fill="#4df3ff" filter="url(#cyanGlow)">
+        <animate attributeName="opacity" values="0.2;1;0.2" dur="1s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <!-- Subtle neural lattice pulsing behind the identity panel -->
+    <g fill="none" stroke-linecap="round" opacity="0.22">
+      <path d="M330 168L396 132L468 164L536 118L610 158L682 126L760 166" stroke="#43eaff" stroke-width="1.3" stroke-dasharray="8 14">
+        <animate attributeName="stroke-dashoffset" values="0;-132" dur="4.5s" repeatCount="indefinite"/>
+      </path>
+      <path d="M350 118L418 154L492 112L566 166L640 120L720 150" stroke="#e8bd55" stroke-width="1" stroke-dasharray="5 16">
+        <animate attributeName="stroke-dashoffset" values="0;126" dur="5.4s" begin="0.6s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    <g fill="#5df2ff">
+      <circle cx="396" cy="132" r="3" opacity="0.25">
+        <animate attributeName="opacity" values="0.2;1;0.2" dur="2.8s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="468" cy="164" r="3" opacity="0.25">
+        <animate attributeName="opacity" values="0.2;1;0.2" dur="2.8s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" begin="0.45s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="536" cy="118" r="3" opacity="0.25">
+        <animate attributeName="opacity" values="0.2;1;0.2" dur="2.8s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" begin="0.9s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="610" cy="158" r="3" opacity="0.25">
+        <animate attributeName="opacity" values="0.2;1;0.2" dur="2.8s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" begin="1.35s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="682" cy="126" r="3" opacity="0.25">
+        <animate attributeName="opacity" values="0.2;1;0.2" dur="2.8s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" begin="1.8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="720" cy="150" r="3" opacity="0.25">
+        <animate attributeName="opacity" values="0.2;1;0.2" dur="2.8s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" begin="2.25s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+    <circle r="3.5" fill="#efffff" opacity="0" filter="url(#cyanGlow)">
+      <animateMotion path="M330 168L396 132L468 164L536 118L610 158L682 126L760 166" dur="5.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.9;1" dur="5.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="3" fill="#f3c75e" opacity="0" filter="url(#goldGlow)">
+      <animateMotion path="M350 118L418 154L492 112L566 166L640 120L720 150" dur="6s" begin="1.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.8;0.8;0" keyTimes="0;0.1;0.9;1" dur="6s" begin="1.2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Left information console -->
+    <g transform="translate(64 55)" font-family="Segoe UI, Arial, sans-serif">
+      <g font-family="Consolas, monospace" font-size="13" font-weight="700" letter-spacing="2">
+        <path d="M0 0H286L302 16L286 32H0L-16 16Z" fill="#11131a" stroke="#efb83e" stroke-width="1.5"/>
+        <circle cx="18" cy="16" r="5" fill="#38edff" filter="url(#cyanGlow)">
+          <animate attributeName="opacity" values="0.35;1;0.35" dur="1.7s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </circle>
+        <text x="34" y="21" fill="#bafaff">J.A.R.V.I.S. // ONLINE</text>
+      </g>
+
+      <text x="0" y="78" fill="#f2c55f" font-family="Consolas, monospace" font-size="15" font-weight="700" letter-spacing="6">MARK JPL-26</text>
+      <!-- V8 identity forge: decode → font modes → energy scan → verified -->
+      <g clip-path="url(#nameReveal)">
+        <text id="nameBase" x="0" y="137" fill="#f7fbff" font-family="Segoe UI, Arial, sans-serif" font-size="50" font-weight="800" letter-spacing="1" textLength="570" lengthAdjust="spacingAndGlyphs" stroke="#59efff" stroke-opacity="0">
+          JEROME PRAKASH L
+          <animate attributeName="opacity" values="1;0.12;0.12;1;1" keyTimes="0;0.015;0.13;0.17;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+          <animate attributeName="fill-opacity" values="1;1;0;0;0;1;1" keyTimes="0;0.30;0.34;0.63;0.96;0.99;1" dur="12s" begin="3s" repeatCount="indefinite"/>
+          <animate attributeName="font-weight" values="700;900;800;700" keyTimes="0;0.34;0.68;1" dur="2s" begin="3s" repeatCount="indefinite"/>
+          <animate attributeName="letter-spacing" values="0.5;1.8;0.8;0.5" keyTimes="0;0.34;0.68;1" dur="2s" begin="3s" repeatCount="indefinite"/>
+          <animate attributeName="stroke-opacity" values="0.08;0.34;0.08" dur="2s" begin="3s" repeatCount="indefinite"/>
+        </text>
+
+        <text id="nameStyleJarvis" x="0" y="137" fill="#e9feff" fill-opacity="0" opacity="0" font-family="Consolas, Monaco, 'Courier New', monospace" font-size="48" font-weight="700" letter-spacing="2" textLength="570" lengthAdjust="spacingAndGlyphs" stroke="#53efff" stroke-opacity="0.35" stroke-width="0.5">
+          JEROME PRAKASH L
+          <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.17;0.20;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+          <animate attributeName="fill-opacity" values="0;0;1;1;0;0" keyTimes="0;0.30;0.34;0.63;0.67;1" dur="12s" begin="3s" repeatCount="indefinite"/>
+          <animate attributeName="font-weight" values="600;800;700;600" keyTimes="0;0.34;0.68;1" dur="2s" begin="3s" repeatCount="indefinite"/>
+          <animate attributeName="letter-spacing" values="1.2;3;1.8;1.2" keyTimes="0;0.34;0.68;1" dur="2s" begin="3s" repeatCount="indefinite"/>
+          <animate attributeName="stroke-width" values="0.25;0.9;0.25" dur="2s" begin="3s" repeatCount="indefinite"/>
+        </text>
+
+        <text id="nameStyleArmor" x="0" y="137" fill="#fff1ba" fill-opacity="0" opacity="0" font-family="Georgia, 'Times New Roman', serif" font-size="49" font-weight="700" font-style="italic" letter-spacing="1" textLength="570" lengthAdjust="spacingAndGlyphs" stroke="#f6c453" stroke-opacity="0.46" stroke-width="0.45">
+          JEROME PRAKASH L
+          <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.17;0.20;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+          <animate attributeName="fill-opacity" values="0;0;1;1;0;0" keyTimes="0;0.63;0.67;0.96;0.99;1" dur="12s" begin="3s" repeatCount="indefinite"/>
+          <animate attributeName="font-weight" values="600;800;700;600" keyTimes="0;0.34;0.68;1" dur="2s" begin="3s" repeatCount="indefinite"/>
+          <animate attributeName="letter-spacing" values="0.3;1.7;0.8;0.3" keyTimes="0;0.34;0.68;1" dur="2s" begin="3s" repeatCount="indefinite"/>
+          <animate attributeName="stroke-width" values="0.2;0.85;0.2" dur="2s" begin="3s" repeatCount="indefinite"/>
+        </text>
+
+        <!-- Brief red/cyan holographic ghosts bridge each four-second font change -->
+        <text id="nameModeGhostCyan" x="0" y="137" fill="#4ff2ff" opacity="0" font-family="Consolas, monospace" font-size="49" font-weight="800" textLength="570" lengthAdjust="spacingAndGlyphs" filter="url(#cyanGlow)">
+          JEROME PRAKASH L
+          <animate attributeName="opacity" values="0;0;0.52;0.14;0;0;0.52;0.14;0;0;0.52;0.14;0" keyTimes="0;0.285;0.30;0.325;0.35;0.615;0.63;0.655;0.68;0.945;0.96;0.98;1" dur="12s" begin="3s" repeatCount="indefinite"/>
+          <animate attributeName="x" values="0;0;-3;3;0;0;-3;3;0;0;-3;3;0" keyTimes="0;0.285;0.30;0.325;0.35;0.615;0.63;0.655;0.68;0.945;0.96;0.98;1" dur="12s" begin="3s" repeatCount="indefinite"/>
+        </text>
+        <text id="nameModeGhostRed" x="0" y="137" fill="#ff4054" opacity="0" font-family="Segoe UI, Arial, sans-serif" font-size="50" font-weight="800" textLength="570" lengthAdjust="spacingAndGlyphs">
+          JEROME PRAKASH L
+          <animate attributeName="opacity" values="0;0;0.34;0.08;0;0;0.34;0.08;0;0;0.34;0.08;0" keyTimes="0;0.285;0.30;0.325;0.35;0.615;0.63;0.655;0.68;0.945;0.96;0.98;1" dur="12s" begin="3s" repeatCount="indefinite"/>
+          <animate attributeName="x" values="0;0;3;-2;0;0;3;-2;0;0;3;-2;0" keyTimes="0;0.285;0.30;0.325;0.35;0.615;0.63;0.655;0.68;0.945;0.96;0.98;1" dur="12s" begin="3s" repeatCount="indefinite"/>
+        </text>
+
+        <g font-size="50" font-weight="800" letter-spacing="1">
+          <text id="nameDecodeRed" x="0" y="137" fill="#ff5262" opacity="0" textLength="570" lengthAdjust="spacingAndGlyphs">
+            J3R0M3 PR4K45H L
+            <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.01;0.055;0.075;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+            <animate attributeName="x" values="0;-3;4;0;0" keyTimes="0;0.01;0.035;0.075;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+          </text>
+          <text id="nameDecodeCyan" x="0" y="137" fill="#55f3ff" opacity="0" textLength="570" lengthAdjust="spacingAndGlyphs">
+            JER0ME PRAK45H L
+            <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.055;0.07;0.11;0.13;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+            <animate attributeName="x" values="0;0;3;-2;0;0" keyTimes="0;0.055;0.075;0.1;0.13;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+          </text>
+          <text id="nameDecodedGold" x="0" y="137" fill="#f8d77b" opacity="0" textLength="570" lengthAdjust="spacingAndGlyphs">
+            JEROME PRAKASH L
+            <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.11;0.125;0.17;0.21;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+          </text>
+        </g>
+
+        <text id="nameSweepText" x="0" y="137" fill="url(#nameEnergySweep)" font-size="50" font-weight="800" letter-spacing="1" opacity="0" filter="url(#cyanGlow)">
+          JEROME PRAKASH L
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.115;0.13;0.27;0.3;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        </text>
+
+        <rect id="nameScanBand" x="-24" y="89" width="34" height="61" fill="#32eaff" opacity="0.08">
+          <animate attributeName="x" values="-24;-24;590;590" keyTimes="0;0.12;0.28;1" dur="20s" begin="3s" calcMode="spline" keySplines="0 0 1 1;0.42 0 0.58 1;0 0 1 1" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0;0.12;0.12;0;0" keyTimes="0;0.115;0.13;0.27;0.3;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        </rect>
+        <rect id="nameScanLine" x="-6" y="89" width="3" height="61" fill="#efffff" opacity="0" filter="url(#cyanGlow)">
+          <animate attributeName="x" values="-6;-6;608;608" keyTimes="0;0.12;0.28;1" dur="20s" begin="3s" calcMode="spline" keySplines="0 0 1 1;0.42 0 0.58 1;0 0 1 1" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.115;0.13;0.27;0.3;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        </rect>
+      </g>
+
+      <g id="identityVerified" font-family="Consolas, monospace" opacity="0">
+        <path d="M356 56H636L648 68L636 84H356L344 70Z" fill="#07141a" stroke="#43edff" stroke-width="1.2"/>
+        <circle cx="365" cy="70" r="3.5" fill="#f4c75d" filter="url(#goldGlow)">
+          <animate attributeName="opacity" values="0.35;1;0.35" dur="0.8s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </circle>
+        <text x="378" y="74" fill="#c8fbff" font-size="11" font-weight="700" letter-spacing="1.5">IDENTITY VERIFIED // JPL-26</text>
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.285;0.31;0.46;0.5;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      </g>
+
+      <rect x="0" y="91" width="4" height="56" fill="#eaffff" opacity="0" filter="url(#cyanGlow)">
+        <animate attributeName="x" from="0" to="590" dur="2.2s" begin="0s" fill="freeze"/>
+        <animate attributeName="opacity" values="1;1;0" keyTimes="0;0.92;1" dur="2.3s" begin="0s" fill="freeze"/>
+      </rect>
+      <rect x="0" y="155" width="680" height="4" rx="2" fill="url(#energyLine)"/>
+      <path id="nameLaserLine" d="M0 157H680" fill="none" stroke="#edffff" stroke-width="5" stroke-linecap="round" stroke-dasharray="680" stroke-dashoffset="680" opacity="0" filter="url(#cyanGlow)">
+        <animate attributeName="stroke-dashoffset" values="680;680;0;0;-680;-680" keyTimes="0;0.2;0.3;0.34;0.41;1" dur="20s" begin="3s" calcMode="spline" keySplines="0 0 1 1;0.42 0 0.58 1;0 0 1 1;0.42 0 0.58 1;0 0 1 1" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.21;0.38;0.42;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        <animate attributeName="stroke" values="#35eaff;#35eaff;#ffffff;#f6c453;#f6c453" keyTimes="0;0.2;0.28;0.36;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      </path>
+      <circle id="nameLaserOrb" cx="0" cy="157" r="6" fill="#ffffff" opacity="0" filter="url(#cyanGlow)">
+        <animate attributeName="cx" values="0;0;680;680;0" keyTimes="0;0.2;0.3;0.41;1" dur="20s" begin="3s" calcMode="spline" keySplines="0 0 1 1;0.42 0 0.58 1;0 0 1 1;0 0 1 1" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19;0.21;0.38;0.42;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        <animate attributeName="fill" values="#35eaff;#35eaff;#ffffff;#f6c453;#f6c453" keyTimes="0;0.2;0.28;0.36;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="0" cy="157" r="4" fill="#eaffff" filter="url(#cyanGlow)">
+        <animate attributeName="cx" values="0;680;680" keyTimes="0;0.84;1" dur="4s" calcMode="spline" keySplines="0.42 0 0.58 1;0 0 1 1" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.78;1" dur="4s" repeatCount="indefinite"/>
+      </circle>
+
+      <g font-size="20" font-weight="700" letter-spacing="1">
+        <text x="0" y="200" fill="#f0c75f">ROLE //</text>
+        <text x="92" y="200" fill="#36e8ff" opacity="1">
+          AI &amp; AUTOMATION BUILDER
+          <animate attributeName="opacity" values="1;1;0;0;0;1" keyTimes="0;0.21;0.26;0.93;0.98;1" dur="12s" repeatCount="indefinite"/>
+        </text>
+        <text x="92" y="200" fill="#5ff1ff" opacity="0">
+          FULL-STACK DEVELOPER
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.21;0.26;0.46;0.51;1" dur="12s" repeatCount="indefinite"/>
+        </text>
+        <text x="92" y="200" fill="#8df7ff" opacity="0">
+          COMPUTER VISION EXPLORER
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.46;0.51;0.71;0.76;1" dur="12s" repeatCount="indefinite"/>
+        </text>
+        <text x="92" y="200" fill="#d8fbff" opacity="0">
+          DATA ANALYTICS LEARNER
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.71;0.76;0.93;0.98;1" dur="12s" repeatCount="indefinite"/>
+        </text>
+      </g>
+      <!-- V6 story motto: idea → build → launch -->
+      <g font-family="Consolas, monospace" font-size="14" letter-spacing="1">
+        <g fill="#b6c9d1" opacity="1">
+          <animate attributeName="opacity" values="1;0.25;0.25;1" keyTimes="0;0.03;0.95;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+          <text x="0" y="235">THINK DIFFERENTLY</text>
+          <text x="164" y="235">·</text>
+          <text x="192" y="235">BUILD DELIBERATELY</text>
+          <text x="375" y="235">·</text>
+          <text x="403" y="235">SHIP WHAT MATTERS</text>
+        </g>
+        <text x="0" y="235" fill="#f3c75e" opacity="0" textLength="158" lengthAdjust="spacingAndGlyphs">
+          7H1NK_D1FF3R3NTLY
+          <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.04;0.07;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        </text>
+        <text x="0" y="235" fill="#f8d980" opacity="0" textLength="158" lengthAdjust="spacingAndGlyphs">
+          TH1NK D!FF3R3NTLY
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.04;0.07;0.10;0.13;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        </text>
+        <text x="0" y="235" fill="#ffe28d" opacity="0" filter="url(#goldGlow)">
+          THINK DIFFERENTLY
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.10;0.13;0.27;0.32;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        </text>
+        <text x="192" y="235" fill="#62f2ff" opacity="0" filter="url(#cyanGlow)">
+          BUILD DELIBERATELY
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.30;0.33;0.55;0.59;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        </text>
+        <text x="403" y="235" fill="#f8feff" opacity="0" filter="url(#cyanGlow)">
+          SHIP WHAT MATTERS
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.68;0.71;0.83;0.87;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        </text>
+      </g>
+
+      <g transform="translate(0 270)" font-family="Consolas, monospace" font-size="12">
+        <path d="M0 0H197L210 13V58H0Z" fill="#0b1017" stroke="#8f1b20" stroke-width="1.5"/>
+        <path d="M0 0H197L210 13" fill="none" stroke="#f0bd4e" stroke-width="2"/>
+        <text x="14" y="23" fill="#8fa6af">PRIMARY DIRECTIVE</text>
+        <text x="14" y="45" fill="#f8d77f" font-weight="700">BUILD THE FUTURE</text>
+
+        <g transform="translate(224)">
+          <path d="M0 0H158L171 13V58H0Z" fill="#08131a" stroke="#14728a" stroke-width="1.5"/>
+          <path d="M0 0H158L171 13" fill="none" stroke="#36e8ff" stroke-width="2"/>
+          <text x="14" y="23" fill="#7899a6">BASE</text>
+          <text x="14" y="45" fill="#d7fbff" font-weight="700">CHENNAI, INDIA</text>
+        </g>
+
+        <g transform="translate(409)">
+          <path d="M0 0H244L257 13V58H0Z" fill="#0b1017" stroke="#8f1b20" stroke-width="1.5"/>
+          <path d="M0 0H244L257 13" fill="none" stroke="url(#energyLine)" stroke-width="2"/>
+          <text x="14" y="23" fill="#8fa6af">MISSION STATUS</text>
+          <text x="14" y="45" fill="#49f1ff" font-weight="700" opacity="1">
+            READY TO COLLABORATE
+            <animate attributeName="opacity" values="1;1;0;0;0;1" keyTimes="0;0.28;0.34;0.92;0.98;1" dur="15s" repeatCount="indefinite"/>
+          </text>
+          <text x="14" y="45" fill="#f3cd6b" font-weight="700" opacity="0">
+            OPEN TO INTERNSHIPS
+            <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.28;0.34;0.60;0.66;1" dur="15s" repeatCount="indefinite"/>
+          </text>
+          <text x="14" y="45" fill="#bdfaff" font-weight="700" opacity="0">
+            BUILD MODE ACTIVE
+            <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.60;0.66;0.92;0.98;1" dur="15s" repeatCount="indefinite"/>
+          </text>
+        </g>
+      </g>
+
+      <g transform="translate(0 352)" font-family="Consolas, monospace" font-size="10" letter-spacing="2">
+        <text fill="#874b4f">ARMOR SYSTEM</text>
+        <rect x="106" y="-8" width="166" height="8" rx="4" fill="#251014"/>
+        <rect x="106" y="-8" width="166" height="8" rx="4" fill="url(#armorGold)">
+          <animate attributeName="width" values="30;166;148;166" dur="5s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </rect>
+        <text x="286" fill="#f3cc6a">100%</text>
+        <text x="361" fill="#3ecfe4">HOLOGRAM LINK</text>
+        <rect x="480" y="-8" width="148" height="8" rx="4" fill="#09232c"/>
+        <rect x="480" y="-8" width="148" height="8" rx="4" fill="#25dff6">
+          <animate attributeName="width" values="18;148;128;148" dur="4.2s" begin="0.6s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </rect>
+        <text x="642" fill="#65efff">ONLINE</text>
+        <circle cx="716" cy="-4" r="3.5" fill="#4df4ff" filter="url(#cyanGlow)">
+          <animate attributeName="opacity" values="0.25;1;0.25" dur="1.2s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    </g>
+
+    <!-- Story spark: the idea enters the neural lattice and powers the reactor -->
+    <g transform="translate(225 286)">
+      <circle r="5" fill="none" stroke="#f5cf69" stroke-width="2" opacity="0">
+        <animate attributeName="r" values="5;5;22;22;5" keyTimes="0;0.13;0.19;0.23;1" dur="20s" begin="3s" calcMode="spline" keySplines="0 0 1 1;0.2 0.7 0.4 1;0 0 1 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0;0.85;0;0" keyTimes="0;0.13;0.16;0.23;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+    <circle r="5" fill="#f5c75d" opacity="0" filter="url(#goldGlow)">
+      <animateMotion path="M225 286C250 245 285 190 330 168L396 132L468 164L536 118L610 158L682 126L760 166C783 172 801 190 812 210" keyPoints="0;0;1;1" keyTimes="0;0.15;0.43;1" calcMode="spline" keySplines="0 0 1 1;0.42 0 0.58 1;0 0 1 1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.13;0.15;0.41;0.45;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      <animate attributeName="fill" values="#f5c75d;#f5c75d;#5df3ff;#5df3ff" keyTimes="0;0.15;0.30;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Energy transfer from the identity rail into the Arc Reactor -->
+    <g fill="none" stroke-linecap="round">
+      <path d="M744 212H792L812 210" stroke="#082c35" stroke-width="8" opacity="0.9"/>
+      <path d="M744 212H792L812 210" stroke="url(#energyLine)" stroke-width="3.5" stroke-dasharray="20 18" filter="url(#cyanGlow)">
+        <animate attributeName="stroke-dashoffset" values="76;0" dur="1.6s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.45;1;0.45" dur="1.6s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      </path>
+      <circle r="4" fill="#efffff" stroke="none" filter="url(#cyanGlow)">
+        <animateMotion path="M744 212H792L812 210" dur="2.1s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.82;1" dur="2.1s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <!-- V8 synchronized surge from the name laser into the reactor -->
+    <path id="nameToCoreSurge" d="M744 212H792L812 210" fill="none" stroke="#ecffff" stroke-width="6" stroke-linecap="round" stroke-dasharray="112" stroke-dashoffset="112" opacity="0" filter="url(#cyanGlow)">
+      <animate attributeName="stroke-dashoffset" values="112;112;0;-112;-112" keyTimes="0;0.22;0.30;0.40;1" dur="20s" begin="3s" calcMode="spline" keySplines="0 0 1 1;0.42 0 0.58 1;0.42 0 0.58 1;0 0 1 1" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.20;0.22;0.38;0.42;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      <animate attributeName="stroke" values="#35eaff;#35eaff;#ffffff;#f6c453;#f6c453" keyTimes="0;0.20;0.28;0.36;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+    </path>
+    <circle id="nameToCoreOrb" r="6" fill="#ffffff" opacity="0" filter="url(#cyanGlow)">
+      <animateMotion path="M744 212H792L812 210" keyPoints="0;0;1;1" keyTimes="0;0.24;0.34;1" calcMode="spline" keySplines="0 0 1 1;0.42 0 0.58 1;0 0 1 1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.22;0.24;0.34;0.38;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      <animate attributeName="fill" values="#35eaff;#35eaff;#ffffff;#f6c453;#f6c453" keyTimes="0;0.20;0.28;0.36;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Repulsor impact sparks synchronized with reactor overdrive -->
+    <g transform="translate(812 210)">
+      <g opacity="0" filter="url(#goldGlow)">
+        <path d="M-3 0L-24-10M-2-3L-12-25M-2 3L-15 23M1-4L8-22M2 3L12 18" fill="none" stroke="#f5c85f" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="-18" cy="-15" r="2.4" fill="#fff0a3"/>
+        <circle cx="-24" cy="9" r="2" fill="#56efff"/>
+        <circle cx="6" cy="-17" r="1.8" fill="#ffffff"/>
+        <circle cx="10" cy="14" r="2.2" fill="#f4c75d"/>
+        <animateTransform attributeName="transform" type="scale" values="0.25;0.25;1.6;2;0.25" keyTimes="0;0.58;0.64;0.74;1" dur="20s" begin="3s" calcMode="spline" keySplines="0 0 1 1;0.2 0.7 0.4 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.58;0.62;0.74;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      </g>
+      <circle r="5" fill="none" stroke="#7bf5ff" stroke-width="2" opacity="0">
+        <animate attributeName="r" values="5;5;34;44;5" keyTimes="0;0.58;0.66;0.74;1" dur="20s" begin="3s" calcMode="spline" keySplines="0 0 1 1;0.2 0.7 0.4 1;0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0;0.8;0;0" keyTimes="0;0.58;0.62;0.74;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <!-- Hybrid Arc Reactor / JARVIS hologram -->
+    <g transform="translate(982 210)">
+      <!-- V10 silk hover: the whole reactor gently floats on eased thrust -->
+      <animateTransform attributeName="transform" type="translate" additive="sum" values="0 0;0 -3;0 0" dur="6s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      <circle r="190" fill="url(#reactorAura)" opacity="0.42" filter="url(#softGlow)">
+        <animate attributeName="opacity" values="0.42;0.82;0.42" dur="2s" begin="3s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Rotating radar sweep -->
+      <g opacity="0.2">
+        <path d="M0 0V-153A153 153 0 0 1 108-108Z" fill="#32e9ff"/>
+        <path d="M0 0V-153" stroke="#b9fbff" stroke-width="2" filter="url(#cyanGlow)"/>
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="6.5s" repeatCount="indefinite"/>
+      </g>
+
+      <circle r="170" fill="#05070a" stroke="#2f0609" stroke-width="20"/>
+      <circle r="158" fill="none" stroke="url(#armorRed)" stroke-width="14" stroke-dasharray="58 17">
+        <animateTransform attributeName="transform" type="rotate" values="0;80;160;300;360" keyTimes="0;0.45;0.60;0.72;1" dur="20s" begin="3s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1;0.3 0 0.7 1;0.3 0 0.7 1" repeatCount="indefinite"/>
+      </circle>
+      <circle r="143" fill="none" stroke="#f3c65c" stroke-width="3" stroke-dasharray="5 10 34 9" opacity="0.88">
+        <animateTransform attributeName="transform" type="rotate" values="360;280;200;60;0" keyTimes="0;0.45;0.60;0.72;1" dur="20s" begin="3s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1;0.3 0 0.7 1;0.3 0 0.7 1" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Streaming reactor-energy arcs -->
+      <circle r="181" fill="none" stroke="#44edff" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="48 96 12 72" opacity="0.62" filter="url(#cyanGlow)">
+        <animate attributeName="stroke-dashoffset" values="0;-456" dur="7s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.28;0.78;0.28" dur="3.2s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      </circle>
+      <circle r="132" fill="none" stroke="#f4c75d" stroke-width="2" stroke-linecap="round" stroke-dasharray="64 142" opacity="0.7" filter="url(#goldGlow)">
+        <animate attributeName="stroke-dashoffset" values="0;412" dur="5.6s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- V8 font-mode ring: cyan future → white analysis → gold armor -->
+      <circle id="reactorModeRing" r="151" fill="none" stroke="#35eaff" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 12 42 18" opacity="0" filter="url(#cyanGlow)">
+        <animate attributeName="stroke" values="#35eaff;#35eaff;#ffffff;#ffffff;#f6c453;#f6c453;#35eaff" keyTimes="0;0.30;0.34;0.63;0.67;0.96;1" dur="12s" begin="3s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-dashoffset" values="0;-312" dur="2s" begin="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.28;0.88;0.28" dur="2s" begin="3s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Electric energy arcs jumping between the inner rings -->
+      <g id="reactorElectricArcs" fill="none" stroke="#35eaff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity="0" filter="url(#cyanGlow)">
+        <path d="M-62-104L-51-117L-38-108L-24-127L-8-112L8-130L23-111L39-123L62-104"/>
+        <path d="M-62-104L-51-117L-38-108L-24-127L-8-112L8-130L23-111L39-123L62-104" transform="rotate(120)"/>
+        <path d="M-62-104L-51-117L-38-108L-24-127L-8-112L8-130L23-111L39-123L62-104" transform="rotate(240)"/>
+        <animate attributeName="stroke" values="#35eaff;#35eaff;#ffffff;#ffffff;#f6c453;#f6c453;#35eaff" keyTimes="0;0.30;0.34;0.63;0.67;0.96;1" dur="12s" begin="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.08;0.9;0.18;0.72;0.08" keyTimes="0;0.22;0.5;0.78;1" dur="2s" begin="3s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" begin="3s" repeatCount="indefinite"/>
+      </g>
+
+      <!-- Red-gold armor vanes -->
+      <g fill="url(#armorGold)" stroke="#8e161c" stroke-width="3" filter="url(#goldGlow)">
+        <path d="M-22-142H22L31-112H-31Z"/>
+        <path d="M-22-142H22L31-112H-31Z" transform="rotate(45)"/>
+        <path d="M-22-142H22L31-112H-31Z" transform="rotate(90)"/>
+        <path d="M-22-142H22L31-112H-31Z" transform="rotate(135)"/>
+        <path d="M-22-142H22L31-112H-31Z" transform="rotate(180)"/>
+        <path d="M-22-142H22L31-112H-31Z" transform="rotate(225)"/>
+        <path d="M-22-142H22L31-112H-31Z" transform="rotate(270)"/>
+        <path d="M-22-142H22L31-112H-31Z" transform="rotate(315)"/>
+        <animateTransform attributeName="transform" type="rotate" values="0;-70;-150;-310;-360" keyTimes="0;0.45;0.60;0.72;1" dur="20s" begin="3s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1;0.3 0 0.7 1;0.3 0 0.7 1" repeatCount="indefinite"/>
+      </g>
+
+      <!-- Orbiting energy particles -->
+      <g fill="#5cf2ff" filter="url(#cyanGlow)">
+        <circle cx="0" cy="-174" r="4.5"/>
+        <circle cx="123" cy="-123" r="3"/>
+        <circle cx="-151" cy="87" r="3.5"/>
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/>
+      </g>
+      <g fill="#f5c75d" filter="url(#goldGlow)">
+        <circle cx="0" cy="-133" r="3"/>
+        <circle cx="-94" cy="-94" r="2.5"/>
+        <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="5.8s" repeatCount="indefinite"/>
+      </g>
+
+      <!-- V10 eased gimbal flare: an orbiting glow that accelerates and glides -->
+      <g>
+        <circle cx="0" cy="-120" r="5" fill="#bdf9ff" opacity="0.7" filter="url(#cyanGlow)">
+          <animate attributeName="opacity" values="0.3;0.85;0.3" dur="3s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+          <animate attributeName="r" values="4;6;4" dur="3s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        </circle>
+        <animateTransform attributeName="transform" type="rotate" values="0;140;220;360" keyTimes="0;0.35;0.65;1" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1" dur="9s" repeatCount="indefinite"/>
+      </g>
+
+      <!-- V8 cyan and gold micro-particle halo -->
+      <g id="reactorCyanParticles" fill="#7af6ff" opacity="0" filter="url(#cyanGlow)">
+        <circle cx="0" cy="-165" r="2.4"/>
+        <circle cx="82" cy="-133" r="1.8"/>
+        <circle cx="146" cy="-58" r="2.2"/>
+        <circle cx="-128" cy="96" r="1.7"/>
+        <circle cx="-62" cy="150" r="2"/>
+        <circle cx="112" cy="112" r="1.6"/>
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" begin="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.22;1;0.22" dur="2s" begin="3s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      </g>
+      <g id="reactorGoldParticles" fill="#f9d46f" opacity="0" filter="url(#goldGlow)">
+        <circle cx="0" cy="-126" r="2"/>
+        <circle cx="-74" cy="-102" r="1.7"/>
+        <circle cx="-121" cy="36" r="2.2"/>
+        <circle cx="88" cy="91" r="1.8"/>
+        <circle cx="118" cy="-32" r="1.6"/>
+        <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="3.2s" begin="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.18;0.9;0.18" dur="2s" begin="3s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      </g>
+
+      <!-- Blue JARVIS rings -->
+      <circle r="107" fill="#040b11" stroke="#36e8ff" stroke-width="3" filter="url(#cyanGlow)"/>
+
+      <!-- Two-second reactor breathing loop, synchronized after boot -->
+      <circle id="reactorBreath" r="68" fill="none" stroke="#5df2ff" stroke-width="2.5" opacity="0" filter="url(#cyanGlow)">
+        <animate attributeName="r" values="68;112;68" dur="2s" begin="3s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.12;0.58;0.12" dur="2s" begin="3s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        <animate attributeName="stroke" values="#35eaff;#35eaff;#ffffff;#ffffff;#f6c453;#f6c453;#35eaff" keyTimes="0;0.30;0.34;0.63;0.67;0.96;1" dur="12s" begin="3s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Arc Reactor overdrive shockwave during the V6 charge phase -->
+      <circle r="70" fill="none" stroke="#77f7ff" stroke-width="2" opacity="0">
+        <animate attributeName="r" values="70;70;188;188" keyTimes="0;0.58;0.72;1" dur="20s" begin="3s" calcMode="spline" keySplines="0 0 1 1;0.2 0.7 0.4 1;0 0 1 1" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0;0.72;0;0" keyTimes="0;0.58;0.62;0.72;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-width" values="3;3;1;1" keyTimes="0;0.58;0.72;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle r="70" fill="none" stroke="#f3c65c" stroke-width="1.5" opacity="0">
+        <animate attributeName="r" values="70;70;178;178" keyTimes="0;0.60;0.74;1" dur="20s" begin="3s" calcMode="spline" keySplines="0 0 1 1;0.2 0.7 0.4 1;0 0 1 1" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0;0.55;0;0" keyTimes="0;0.60;0.64;0.74;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-width" values="2.5;2.5;1;1" keyTimes="0;0.60;0.74;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle r="95" fill="none" stroke="#79f6ff" stroke-width="2" stroke-dasharray="2 8 22 7" opacity="0.82">
+        <animateTransform attributeName="transform" type="rotate" values="0;95;190;330;360" keyTimes="0;0.45;0.60;0.72;1" dur="20s" begin="3s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1;0.3 0 0.7 1;0.3 0 0.7 1" repeatCount="indefinite"/>
+      </circle>
+      <circle r="82" fill="none" stroke="#178ca8" stroke-width="2" stroke-dasharray="38 12">
+        <animateTransform attributeName="transform" type="rotate" values="360;265;170;30;0" keyTimes="0;0.45;0.60;0.72;1" dur="20s" begin="3s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1;0.3 0 0.7 1;0.3 0 0.7 1" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Counter-rotating targeting brackets -->
+      <g fill="none" stroke="#a9fbff" stroke-width="2.5" stroke-linecap="round" opacity="0.74">
+        <path d="M-38-116H-65L-80-101"/>
+        <path d="M38-116H65L80-101"/>
+        <path d="M-38 116H-65L-80 101"/>
+        <path d="M38 116H65L80 101"/>
+        <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="21s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.35;0.9;0.35" dur="2.8s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      </g>
+
+      <!-- Periodic JARVIS target-lock calibration -->
+      <g fill="none" stroke="#f4cf6d" stroke-width="2.5" stroke-linecap="round" opacity="0" filter="url(#goldGlow)">
+        <path d="M-72-112H-112V-72"/>
+        <path d="M72-112H112V-72"/>
+        <path d="M-72 112H-112V72"/>
+        <path d="M72 112H112V72"/>
+        <circle r="118" stroke="#6bf2ff" stroke-width="1.4" stroke-dasharray="8 14"/>
+        <path d="M-24 0H24M0-24V24" stroke="#c9fbff" stroke-width="1.3"/>
+        <text x="0" y="-126" fill="#f8d879" stroke="none" font-family="Consolas, monospace" font-size="8" font-weight="700" letter-spacing="2" text-anchor="middle">TARGET LOCK</text>
+        <animateTransform attributeName="transform" type="scale" values="1.35;1.35;0.92;0.92;1.35" keyTimes="0;0.37;0.46;0.54;1" dur="20s" begin="3s" calcMode="spline" keySplines="0 0 1 1;0.22 1 0.36 1;0 0 1 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.37;0.46;0.54;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      </g>
+
+      <g fill="none" stroke="#4beeff" stroke-width="1.3" opacity="0.62">
+        <ellipse rx="130" ry="34"/>
+        <ellipse rx="122" ry="23" transform="rotate(18)"/>
+        <ellipse rx="122" ry="23" transform="rotate(-18)"/>
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="27s" repeatCount="indefinite"/>
+      </g>
+
+      <!-- V9 comet trails riding the orbital rings -->
+      <g fill="none" stroke-linecap="round" opacity="0.9">
+        <ellipse rx="130" ry="34" stroke="#7df5ff" stroke-width="2.4" stroke-dasharray="30 530" filter="url(#cyanGlow)">
+          <animate attributeName="stroke-dashoffset" values="0;-560" dur="6.2s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse rx="122" ry="23" transform="rotate(18)" stroke="#f5cf69" stroke-width="2" stroke-dasharray="20 490" filter="url(#goldGlow)">
+          <animate attributeName="stroke-dashoffset" values="0;510" dur="7.4s" repeatCount="indefinite"/>
+        </ellipse>
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="27s" repeatCount="indefinite"/>
+      </g>
+
+      <!-- Short radial repulsor burst at POWER 100% -->
+      <g id="repulsorBurst" fill="none" stroke="#fff5c9" stroke-width="3" stroke-linecap="round" opacity="0" filter="url(#goldGlow)">
+        <path d="M0-70V-150M49-49L106-106M70 0H150M49 49L106 106M0 70V150M-49 49L-106 106M-70 0H-150M-49-49L-106-106"/>
+        <animate attributeName="opacity" values="0;0;1;0.18;0;0" keyTimes="0;0.64;0.655;0.68;0.71;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="scale" values="0.35;0.35;1.12;1.45;1.45" keyTimes="0;0.64;0.66;0.71;1" dur="20s" begin="3s" calcMode="spline" keySplines="0 0 1 1;0.2 0.7 0.4 1;0.42 0 0.58 1;0 0 1 1" repeatCount="indefinite"/>
+      </g>
+      <circle id="repulsorBurstWave" r="66" fill="none" stroke="#ffffff" stroke-width="3" opacity="0" filter="url(#cyanGlow)">
+        <animate attributeName="r" values="66;66;176;176" keyTimes="0;0.64;0.71;1" dur="20s" begin="3s" calcMode="spline" keySplines="0 0 1 1;0.2 0.7 0.4 1;0 0 1 1" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.64;0.655;0.71;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        <animate attributeName="stroke" values="#35eaff;#35eaff;#ffffff;#f6c453;#f6c453" keyTimes="0;0.62;0.655;0.70;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+      </circle>
+
+      <circle r="66" fill="url(#arcCore)" filter="url(#cyanGlow)">
+        <animate attributeName="r" values="66;70;66" dur="2s" begin="3s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      </circle>
+      <g>
+        <path d="M0-53L46-27V27L0 53L-46 27V-27Z" fill="#07131a" stroke="#e9feff" stroke-width="3"/>
+        <path d="M0-42L36-21V21L0 42L-36 21V-21Z" fill="none" stroke="#35e9ff" stroke-width="2" opacity="0.8"/>
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="32s" repeatCount="indefinite"/>
+      </g>
+      <text x="0" y="4" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="800" text-anchor="middle" letter-spacing="3">JPL</text>
+      <text x="0" y="25" fill="#8ff7ff" font-family="Consolas, monospace" font-size="9" text-anchor="middle" letter-spacing="2">CORE 100%</text>
+      <g font-family="Consolas, monospace" font-size="8" font-weight="700" letter-spacing="1.1" text-anchor="middle">
+        <rect x="-43" y="11" width="86" height="18" rx="3" fill="#041017" stroke="#36e8ff" stroke-width="0.8" opacity="0">
+          <animate attributeName="opacity" values="0;0;0.96;0.96;0;0" keyTimes="0;0.47;0.49;0.70;0.72;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        </rect>
+        <text x="0" y="24" fill="#f5c85f" opacity="0">
+          POWER 000%
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.48;0.49;0.52;0.53;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        </text>
+        <text x="0" y="24" fill="#e8e887" opacity="0">
+          POWER 025%
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.52;0.53;0.56;0.57;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        </text>
+        <text x="0" y="24" fill="#bdf6d0" opacity="0">
+          POWER 050%
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.56;0.57;0.60;0.61;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        </text>
+        <text x="0" y="24" fill="#81f3f4" opacity="0">
+          POWER 075%
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.60;0.61;0.64;0.65;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        </text>
+        <text x="0" y="24" fill="#ffffff" opacity="0" filter="url(#cyanGlow)">
+          POWER 100%
+          <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.64;0.65;0.70;0.72;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+        </text>
+      </g>
+
+      <g font-family="Consolas, monospace" font-size="9" letter-spacing="2" text-anchor="middle">
+        <text y="-178" fill="#f1c762">IRON HUD · SYSTEMS NOMINAL</text>
+        <text y="188" fill="#53edff">J.A.R.V.I.S. · NEURAL LINK ONLINE</text>
+      </g>
+
+    </g>
+
+    <!-- Ship phase: deployment signal launches from the charged reactor -->
+    <path d="M982 210C1035 177 1102 119 1210 74" fill="none" stroke="#69f4ff" stroke-width="4" stroke-linecap="round" stroke-dasharray="44 196" opacity="0" filter="url(#cyanGlow)">
+      <animate attributeName="stroke-dashoffset" values="260;260;0;-180;-180" keyTimes="0;0.67;0.72;0.84;1" dur="20s" begin="3s" calcMode="spline" keySplines="0 0 1 1;0.42 0 0.58 1;0.42 0 0.58 1;0 0 1 1" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.66;0.69;0.82;0.86;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+    </path>
+    <g opacity="0" filter="url(#cyanGlow)">
+      <path d="M-8-5L11 0L-8 5L-3 0Z" fill="#efffff" stroke="#f5c85f" stroke-width="1"/>
+      <animateMotion path="M982 210C1035 177 1102 119 1210 74" keyPoints="0;0;1;1" keyTimes="0;0.68;0.82;1" calcMode="spline" keySplines="0 0 1 1;0.42 0 0.58 1;0 0 1 1" rotate="auto" dur="20s" begin="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.66;0.69;0.82;0.85;1" dur="20s" begin="3s" repeatCount="indefinite"/>
+    </g>
+
+    <!-- Animated holographic scanner -->
+    <rect x="0" y="0" width="1200" height="2" fill="#41eaff" opacity="0.28">
+      <animate attributeName="y" values="10;408;10" dur="8s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.34;0" dur="8s" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Moving telemetry pulses -->
+    <g fill="#3beaff" opacity="0.8" filter="url(#cyanGlow)">
+      <circle r="2.5">
+        <animateMotion dur="4.5s" repeatCount="indefinite" path="M26 138H92L122 168H300"/>
+      </circle>
+      <circle r="2.5">
+        <animateMotion dur="5.2s" begin="1s" repeatCount="indefinite" path="M742 36L706 66V105"/>
+      </circle>
+    </g>
+  </g>
+
+  <rect x="1.5" y="1.5" width="1197" height="417" rx="26.5" fill="none" stroke="#7e1419" stroke-width="3"/>
+  <rect x="6" y="6" width="1188" height="408" rx="23" fill="none" stroke="#27dff7" stroke-width="1" stroke-opacity="0.42"/>
+</svg>

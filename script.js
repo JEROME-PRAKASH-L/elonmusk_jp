@@ -30,12 +30,14 @@
     }
     try {
       var saved = localStorage.getItem(KEY);
-      if (saved === "amber" || saved === "green") apply(saved);
+      if (saved === "amber") saved = "armor";
+      if (saved === "green") saved = "arc";
+      if (saved === "armor" || saved === "arc") apply(saved);
     } catch (e) { /* storage blocked — ignore */ }
 
     if (btn) {
       btn.addEventListener("click", function () {
-        var next = root.getAttribute("data-theme") === "amber" ? "green" : "amber";
+        var next = root.getAttribute("data-theme") === "armor" ? "arc" : "armor";
         apply(next);
         try { localStorage.setItem(KEY, next); } catch (e) {}
       });
@@ -758,7 +760,8 @@
 
     var SELECTOR = [
       ".timeline__item", ".project", ".wf", ".cert",
-      ".contact__row", ".json", ".writing > *", ".badge"
+      ".contact__row", ".json", ".writing > *", ".badge",
+      ".system-profile__code", ".reactor-grid > div", ".inventor-note"
     ].join(", ");
     var els = Array.prototype.slice.call(document.querySelectorAll(SELECTOR));
     if (!els.length) return;
@@ -947,6 +950,7 @@
 
     var SECTIONS = {
       whoami: "whoami", about: "whoami",
+      jarvis: "jarvis", status: "jarvis", system: "jarvis",
       experience: "experience", exp: "experience",
       projects: "projects", project: "projects",
       repos: "repos", repo: "repos",
@@ -992,6 +996,7 @@
       "available commands:",
       "  help            show this list",
       "  whoami          who is Jerome",
+      "  jarvis         show the J.A.R.V.I.S. system profile",
       "  neofetch        profile card, terminal-style",
       "  ls              list sections",
       "  open <section>  jump to a section (projects, skills, contact…)",
@@ -1002,7 +1007,7 @@
       "  email           email Jerome (opens Gmail)",
       "  linkedin        open LinkedIn profile",
       "  github          open GitHub profile",
-      "  theme           toggle green / amber",
+      "  theme           toggle arc / armor",
       "  history         commands you've typed here",
       "  clear           clear this console",
       "",
@@ -1011,7 +1016,7 @@
 
     // every command name run() understands — used by Tab completion
     var COMMANDS = [
-      "help", "whoami", "neofetch", "ls", "open", "cd", "goto", "cat",
+      "help", "whoami", "jarvis", "status", "neofetch", "ls", "open", "cd", "goto", "cat",
       "demo", "repos", "workflows", "skills", "resume", "email", "linkedin",
       "github", "contact", "theme", "history", "clear", "date", "echo", "exit",
       "matrix"
@@ -1023,20 +1028,21 @@
       " │               │   OS:        JeromeOS 2026.1 · terminal edition",
       " │   jerome-os   │   Host:      Chennai, Tamil Nadu, India",
       " ╰───────────────╯   Kernel:    B.E. CSE · DMI College of Engineering",
-      "                     Shell:     Python · JavaScript",
-      "                     Packages:  7 (certs) · 2 (projects)",
-      "                     Focus:     AI Agents · Automation · Computer Vision",
+      "                     Core:      J.A.R.V.I.S. online · Arc Reactor 100%",
+      "                     Shell:     Python · JavaScript · TypeScript",
+      "                     Packages:  7 (certs) · 8 (featured projects)",
+      "                     Focus:     AI Agents · Full-Stack · Data · Vision",
       "                     Writing:   1,000+ LinkedIn followers",
       "                     Contact:   prakashjerome152@gmail.com"
     ].join("\n");
 
     var SKILLS = [
       "{",
-      '  "languages":       ["Python", "JavaScript", "HTML", "CSS"],',
+      '  "languages":       ["Python", "JavaScript", "TypeScript", "Java", "HTML", "CSS"],',
+      '  "web_systems":     ["React", "Next.js", "Tailwind CSS", "Node.js", "REST APIs"],',
       '  "ai_automation":   ["AI Agents", "Prompt Engineering", "Workflow Automation", "RAG"],',
-      '  "tools":           ["Git", "GitHub", "WSL2 / Linux", "REST APIs", "Telegram Bots"],',
-      '  "computer_vision": ["Hand & Gesture Detection", "Real-time HCI"],',
-      '  "communication":   ["Technical Writing", "Documentation", "Content Strategy"]',
+      '  "data_vision":     ["Pandas", "Scikit-learn", "Power BI", "Computer Vision", "Real-time HCI"],',
+      '  "platforms":       ["Supabase", "MongoDB", "Git", "GitHub", "Linux", "Arduino"]',
       "}"
     ].join("\n");
 
@@ -1069,7 +1075,7 @@
 
         case "ls":
         case "dir":
-          out("experience/   projects/   repos/   workflows.yml   skills.json   education/   certs/   writing.md   contact.json");
+          out("jarvis/   experience/   projects/   repos/   workflows.yml   skills.json   education/   certs/   writing.md   contact.json");
           break;
 
         case "open":

@@ -8,7 +8,6 @@ so it drops straight onto GitHub Pages, Netlify, Vercel, or any static host.
 ~/jerome
  > whoami        about + focus areas
  > jarvis        system profile + reactor status
- > experience    timeline
  > projects      8 featured AI, full-stack, data, and computer-vision builds
  > skills        skills.json
  > education      DMI College of Engineering
@@ -37,7 +36,7 @@ so it drops straight onto GitHub Pages, Netlify, Vercel, or any static host.
   `neofetch`, …) is an optional delight layer — with Tab completion, ↑/↓
   history browsing, and a `history` command.
 - **Recruiter Mode.** A one-click, keyboard-accessible 60-second candidate brief
-  presents selected projects, field experience, core skills, résumé, GitHub,
+  presents selected projects, core skills, résumé, GitHub,
   LinkedIn, and a direct contact action. It can also be opened by typing
   `recruiter` or `hire` in the interactive console.
 - **Live GitHub repos.** The `repos` section fetches public repositories from

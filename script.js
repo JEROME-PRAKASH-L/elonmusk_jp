@@ -994,7 +994,6 @@
     var SECTIONS = {
       whoami: "whoami", about: "whoami",
       jarvis: "jarvis", status: "jarvis", system: "jarvis",
-      experience: "experience", exp: "experience",
       projects: "projects", project: "projects",
       repos: "repos", repo: "repos",
       workflows: "workflows", workflow: "workflows",
@@ -1126,7 +1125,7 @@
 
         case "ls":
         case "dir":
-          out("jarvis/   experience/   projects/   repos/   workflows.yml   skills.json   education/   certs/   writing.md   contact.json");
+          out("jarvis/   projects/   repos/   workflows.yml   skills.json   education/   certs/   writing.md   contact.json");
           break;
 
         case "open":

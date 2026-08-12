@@ -55,7 +55,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Spectral:ital,wght@1,500;1,600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2026.3" />
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -72,6 +72,9 @@
         </div>
         <div class="titlebar__title">J.A.R.V.I.S. // PORTFOLIO ONLINE</div>
         <div class="titlebar__controls">
+          <button class="ghost-btn recruiter-chip recruiter-launch" type="button" aria-haspopup="dialog" aria-controls="recruiter-mode" title="Open a 60-second recruiter overview">
+            <span aria-hidden="true">◎</span><span class="recruiter-chip__label">recruiter mode</span>
+          </button>
           <button id="theme-toggle" class="ghost-btn" type="button" aria-label="Switch colour theme" title="Switch theme (arc / armor)">
             <span class="theme-dot" aria-hidden="true"></span><span class="theme-name">arc</span>
           </button>
@@ -116,6 +119,7 @@
             <a class="nav-link" href="#contact" data-cmd="contact"><span class="nav-prompt">&gt;</span> contact</a>
           </nav>
           <div class="sidebar__foot">
+            <button class="sidebar__recruiter recruiter-launch" type="button" aria-haspopup="dialog" aria-controls="recruiter-mode"><span aria-hidden="true">◎</span> recruiter mode</button>
             <a class="sidebar__resume" href="Jerome_Prakash_L_Resume.pdf" target="_blank" rel="noopener">&#8595; resume.pdf</a>
             <div class="sidebar__version">MARK JPL-26 · v2026.2</div>
           </div>
@@ -150,6 +154,7 @@
                 </p>
                 <div class="whoami__actions">
                   <a class="btn btn--solid" href="#projects" data-cmd="projects" aria-label="View projects">ls ./projects</a>
+                  <button class="btn btn--recruiter recruiter-launch" type="button" aria-haspopup="dialog" aria-controls="recruiter-mode">◎ recruiter mode</button>
                   <a class="btn" href="#contact" data-cmd="contact" aria-label="Contact me">./contact.sh</a>
                 </div>
               </div>
@@ -651,6 +656,80 @@
     </div>
   </div>
 
-  <script src="script.js" defer></script>
+  <!-- ===== Recruiter Mode: focused 60-second candidate brief ===== -->
+  <dialog class="recruiter-mode" id="recruiter-mode" aria-labelledby="recruiter-title" aria-describedby="recruiter-summary">
+    <div class="recruiter-mode__shell">
+      <header class="recruiter-mode__head">
+        <div>
+          <p class="recruiter-mode__eyebrow">J.A.R.V.I.S. // CANDIDATE BRIEF</p>
+          <h2 id="recruiter-title">Jerome Prakash L</h2>
+          <p class="recruiter-mode__role">AI Agent &amp; Automation Builder · Full-Stack Developer · Computer Vision Explorer</p>
+        </div>
+        <button class="recruiter-mode__close" type="button" data-recruiter-close aria-label="Close Recruiter Mode">×</button>
+      </header>
+
+      <div class="recruiter-mode__status" role="status">
+        <span><i aria-hidden="true"></i> OPEN TO SWE / AI INTERNSHIPS</span>
+        <span>CHENNAI, INDIA</span>
+        <span>B.E. CSE · 2024–2028</span>
+      </div>
+
+      <p class="recruiter-mode__summary" id="recruiter-summary">
+        CSE student who turns practical problems into working AI, automation, full-stack, data, and computer-vision products. Strongest when prototyping quickly, learning unfamiliar systems, and making technical ideas useful to real people.
+      </p>
+
+      <div class="recruiter-mode__grid">
+        <section class="recruiter-panel recruiter-panel--projects" aria-labelledby="recruiter-projects-title">
+          <div class="recruiter-panel__head">
+            <span>01</span><h3 id="recruiter-projects-title">Selected mission dossiers</h3>
+          </div>
+          <article class="recruiter-project">
+            <div><strong>SkillBridge Local</strong><span>Full-stack marketplace</span></div>
+            <p>Next.js and Supabase platform connecting local businesses with students for scoped micro-tech work.</p>
+            <p class="recruiter-project__links"><a href="https://skillbridge-local-chennai.netlify.app" target="_blank" rel="noopener">live ↗</a><a href="https://github.com/JEROME-PRAKASH-L/skillbridge-local" target="_blank" rel="noopener">code ↗</a></p>
+          </article>
+          <article class="recruiter-project">
+            <div><strong>AI-Powered Document Analysis</strong><span>Document intelligence</span></div>
+            <p>TypeScript workflow for intelligent document analysis and structured extraction.</p>
+            <p class="recruiter-project__links"><a href="https://github.com/JEROME-PRAKASH-L/AI-Powered-Document-Analysis-Extraction" target="_blank" rel="noopener">code ↗</a></p>
+          </article>
+          <article class="recruiter-project">
+            <div><strong>Gesture Control Lab</strong><span>Computer vision &amp; HCI</span></div>
+            <p>Real-time hand-gesture interfaces for mouse control, volume, drawing, and interaction.</p>
+            <p class="recruiter-project__links"><a href="https://github.com/JEROME-PRAKASH-L/Hand-Gesture-Mouse-Control-Project" target="_blank" rel="noopener">code ↗</a></p>
+          </article>
+        </section>
+
+        <div class="recruiter-mode__stack">
+          <section class="recruiter-panel" aria-labelledby="recruiter-experience-title">
+            <div class="recruiter-panel__head">
+              <span>02</span><h3 id="recruiter-experience-title">Field experience</h3>
+            </div>
+            <div class="recruiter-record"><strong>Data Analytics Intern</strong><span>THIRANEX · Jun–Jul 2026</span><p>Dashboards, customer segmentation, K-Means, Linear Regression, Python, Excel, and Power BI.</p></div>
+            <div class="recruiter-record"><strong>VLSI &amp; Embedded Trainee</strong><span>ZARA TECH · Jun–Jul 2026</span><p>Verilog HDL, finite-state machines, Arduino UNO, Embedded C, and sensor prototypes.</p></div>
+          </section>
+
+          <section class="recruiter-panel" aria-labelledby="recruiter-stack-title">
+            <div class="recruiter-panel__head">
+              <span>03</span><h3 id="recruiter-stack-title">Core systems</h3>
+            </div>
+            <ul class="recruiter-skills" aria-label="Core technical skills">
+              <li>Python</li><li>JavaScript</li><li>TypeScript</li><li>React</li><li>Next.js</li><li>Supabase</li><li>AI Agents</li><li>RAG</li><li>Automation</li><li>Computer Vision</li><li>Pandas</li><li>Power BI</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <footer class="recruiter-mode__actions">
+        <a class="btn btn--solid" href="Jerome_Prakash_L_Resume.pdf" target="_blank" rel="noopener">↓ résumé</a>
+        <a class="btn" href="https://github.com/JEROME-PRAKASH-L" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn" href="https://www.linkedin.com/in/jerome-prakash-975a15326" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" href="mailto:prakashjerome152@gmail.com?subject=Internship%20opportunity%20for%20Jerome%20Prakash%20L">contact Jerome →</a>
+        <button class="recruiter-mode__return" type="button" data-recruiter-close>return to portfolio</button>
+      </footer>
+    </div>
+  </dialog>
+
+  <script src="script.js?v=2026.3" defer></script>
 </body>
 </html>

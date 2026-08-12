@@ -36,6 +36,10 @@ so it drops straight onto GitHub Pages, Netlify, Vercel, or any static host.
   command line (`help`, `ls`, `open projects`, `skills`, `resume`, `theme`,
   `neofetch`, …) is an optional delight layer — with Tab completion, ↑/↓
   history browsing, and a `history` command.
+- **Recruiter Mode.** A one-click, keyboard-accessible 60-second candidate brief
+  presents selected projects, field experience, core skills, résumé, GitHub,
+  LinkedIn, and a direct contact action. It can also be opened by typing
+  `recruiter` or `hire` in the interactive console.
 - **Live GitHub repos.** The `repos` section fetches public repositories from
   the GitHub API when it scrolls into view (cached in `sessionStorage` for an
   hour, forks filtered out). If JavaScript is off or the API is unavailable,

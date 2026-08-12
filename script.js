@@ -16,7 +16,7 @@
   } catch (e) { /* noop */ }
 
   /* =======================================================================
-     1. Theme toggle (green <-> amber), persisted
+     1. Theme toggle (arc <-> armor), persisted
      ======================================================================= */
   (function theme() {
     var root = document.documentElement;
@@ -42,6 +42,49 @@
         try { localStorage.setItem(KEY, next); } catch (e) {}
       });
     }
+  })();
+
+  /* =======================================================================
+     Recruiter Mode — an accessible, focused 60-second candidate brief.
+     Native <dialog> handles focus containment; Escape and backdrop close it.
+     ======================================================================= */
+  (function recruiterModeApp() {
+    var dialog = document.getElementById("recruiter-mode");
+    var launches = Array.prototype.slice.call(document.querySelectorAll(".recruiter-launch"));
+    var closes = Array.prototype.slice.call(document.querySelectorAll("[data-recruiter-close]"));
+    if (!dialog || !launches.length) return;
+
+    var lastTrigger = null;
+
+    function open(trigger) {
+      if (dialog.open) return;
+      lastTrigger = trigger || document.activeElement;
+      document.body.classList.add("is-recruiter-open");
+      if (typeof dialog.showModal === "function") dialog.showModal();
+      else dialog.setAttribute("open", "");
+      var closeButton = dialog.querySelector("[data-recruiter-close]");
+      if (closeButton) closeButton.focus();
+    }
+
+    function close() {
+      if (!dialog.open && !dialog.hasAttribute("open")) return;
+      if (typeof dialog.close === "function") dialog.close();
+      else dialog.removeAttribute("open");
+    }
+
+    launches.forEach(function (button) {
+      button.addEventListener("click", function () { open(button); });
+    });
+    closes.forEach(function (button) { button.addEventListener("click", close); });
+
+    dialog.addEventListener("click", function (event) {
+      if (event.target === dialog) close();
+    });
+    dialog.addEventListener("close", function () {
+      document.body.classList.remove("is-recruiter-open");
+      if (lastTrigger && typeof lastTrigger.focus === "function") lastTrigger.focus();
+      lastTrigger = null;
+    });
   })();
 
   /* =======================================================================
@@ -997,6 +1040,7 @@
       "  help            show this list",
       "  whoami          who is Jerome",
       "  jarvis         show the J.A.R.V.I.S. system profile",
+      "  recruiter      open the 60-second candidate brief",
       "  neofetch        profile card, terminal-style",
       "  ls              list sections",
       "  open <section>  jump to a section (projects, skills, contact…)",
@@ -1016,7 +1060,7 @@
 
     // every command name run() understands — used by Tab completion
     var COMMANDS = [
-      "help", "whoami", "jarvis", "status", "neofetch", "ls", "open", "cd", "goto", "cat",
+      "help", "whoami", "jarvis", "status", "recruiter", "hire", "neofetch", "ls", "open", "cd", "goto", "cat",
       "demo", "repos", "workflows", "skills", "resume", "email", "linkedin",
       "github", "contact", "theme", "history", "clear", "date", "echo", "exit",
       "matrix"
@@ -1066,6 +1110,13 @@
 
         case "neofetch":
           out(NEOFETCH); break;
+
+        case "recruiter":
+        case "hire":
+          var recruiterButton = document.querySelector(".recruiter-launch");
+          if (recruiterButton) { recruiterButton.click(); out("opening recruiter mode…"); }
+          else out("recruiter mode unavailable", "line-err");
+          break;
 
         case "history":
           out(history.length

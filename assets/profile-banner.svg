@@ -419,7 +419,7 @@
       <!-- V8 identity forge: decode → font modes → energy scan → verified -->
       <g clip-path="url(#nameReveal)">
         <text id="nameBase" x="0" y="137" fill="#f7fbff" font-family="Segoe UI, Arial, sans-serif" font-size="50" font-weight="800" letter-spacing="1" textLength="570" lengthAdjust="spacingAndGlyphs" stroke="#59efff" stroke-opacity="0">
-          JEROME PRAKASH L
+          Jerome Prakash L
           <animate attributeName="opacity" values="1;0.12;0.12;1;1" keyTimes="0;0.015;0.13;0.17;1" dur="20s" begin="3s" repeatCount="indefinite"/>
           <animate attributeName="fill-opacity" values="1;1;0;0;0;1;1" keyTimes="0;0.30;0.34;0.63;0.96;0.99;1" dur="12s" begin="3s" repeatCount="indefinite"/>
           <animate attributeName="font-weight" values="700;900;800;700" keyTimes="0;0.34;0.68;1" dur="2s" begin="3s" repeatCount="indefinite"/>
@@ -428,7 +428,7 @@
         </text>
 
         <text id="nameStyleJarvis" x="0" y="137" fill="#e9feff" fill-opacity="0" opacity="0" font-family="Consolas, Monaco, 'Courier New', monospace" font-size="48" font-weight="700" letter-spacing="2" textLength="570" lengthAdjust="spacingAndGlyphs" stroke="#53efff" stroke-opacity="0.35" stroke-width="0.5">
-          JEROME PRAKASH L
+          Jerome Prakash L
           <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.17;0.20;1" dur="20s" begin="3s" repeatCount="indefinite"/>
           <animate attributeName="fill-opacity" values="0;0;1;1;0;0" keyTimes="0;0.30;0.34;0.63;0.67;1" dur="12s" begin="3s" repeatCount="indefinite"/>
           <animate attributeName="font-weight" values="600;800;700;600" keyTimes="0;0.34;0.68;1" dur="2s" begin="3s" repeatCount="indefinite"/>
@@ -437,7 +437,7 @@
         </text>
 
         <text id="nameStyleArmor" x="0" y="137" fill="#fff1ba" fill-opacity="0" opacity="0" font-family="Georgia, 'Times New Roman', serif" font-size="49" font-weight="700" font-style="italic" letter-spacing="1" textLength="570" lengthAdjust="spacingAndGlyphs" stroke="#f6c453" stroke-opacity="0.46" stroke-width="0.45">
-          JEROME PRAKASH L
+          Jerome Prakash L
           <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.17;0.20;1" dur="20s" begin="3s" repeatCount="indefinite"/>
           <animate attributeName="fill-opacity" values="0;0;1;1;0;0" keyTimes="0;0.63;0.67;0.96;0.99;1" dur="12s" begin="3s" repeatCount="indefinite"/>
           <animate attributeName="font-weight" values="600;800;700;600" keyTimes="0;0.34;0.68;1" dur="2s" begin="3s" repeatCount="indefinite"/>
@@ -447,35 +447,35 @@
 
         <!-- Brief red/cyan holographic ghosts bridge each four-second font change -->
         <text id="nameModeGhostCyan" x="0" y="137" fill="#4ff2ff" opacity="0" font-family="Consolas, monospace" font-size="49" font-weight="800" textLength="570" lengthAdjust="spacingAndGlyphs" filter="url(#cyanGlow)">
-          JEROME PRAKASH L
+          Jerome Prakash L
           <animate attributeName="opacity" values="0;0;0.52;0.14;0;0;0.52;0.14;0;0;0.52;0.14;0" keyTimes="0;0.285;0.30;0.325;0.35;0.615;0.63;0.655;0.68;0.945;0.96;0.98;1" dur="12s" begin="3s" repeatCount="indefinite"/>
           <animate attributeName="x" values="0;0;-3;3;0;0;-3;3;0;0;-3;3;0" keyTimes="0;0.285;0.30;0.325;0.35;0.615;0.63;0.655;0.68;0.945;0.96;0.98;1" dur="12s" begin="3s" repeatCount="indefinite"/>
         </text>
         <text id="nameModeGhostRed" x="0" y="137" fill="#ff4054" opacity="0" font-family="Segoe UI, Arial, sans-serif" font-size="50" font-weight="800" textLength="570" lengthAdjust="spacingAndGlyphs">
-          JEROME PRAKASH L
+          Jerome Prakash L
           <animate attributeName="opacity" values="0;0;0.34;0.08;0;0;0.34;0.08;0;0;0.34;0.08;0" keyTimes="0;0.285;0.30;0.325;0.35;0.615;0.63;0.655;0.68;0.945;0.96;0.98;1" dur="12s" begin="3s" repeatCount="indefinite"/>
           <animate attributeName="x" values="0;0;3;-2;0;0;3;-2;0;0;3;-2;0" keyTimes="0;0.285;0.30;0.325;0.35;0.615;0.63;0.655;0.68;0.945;0.96;0.98;1" dur="12s" begin="3s" repeatCount="indefinite"/>
         </text>
 
         <g font-size="50" font-weight="800" letter-spacing="1">
           <text id="nameDecodeRed" x="0" y="137" fill="#ff5262" opacity="0" textLength="570" lengthAdjust="spacingAndGlyphs">
-            JEROME PRAKASH L
+            Jerome Prakash L
             <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.01;0.055;0.075;1" dur="20s" begin="3s" repeatCount="indefinite"/>
             <animate attributeName="x" values="0;-3;4;0;0" keyTimes="0;0.01;0.035;0.075;1" dur="20s" begin="3s" repeatCount="indefinite"/>
           </text>
           <text id="nameDecodeCyan" x="0" y="137" fill="#55f3ff" opacity="0" textLength="570" lengthAdjust="spacingAndGlyphs">
-            JEROME PRAKASH L
+            Jerome Prakash L
             <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.055;0.07;0.11;0.13;1" dur="20s" begin="3s" repeatCount="indefinite"/>
             <animate attributeName="x" values="0;0;3;-2;0;0" keyTimes="0;0.055;0.075;0.1;0.13;1" dur="20s" begin="3s" repeatCount="indefinite"/>
           </text>
           <text id="nameDecodedGold" x="0" y="137" fill="#f8d77b" opacity="0" textLength="570" lengthAdjust="spacingAndGlyphs">
-            JEROME PRAKASH L
+            Jerome Prakash L
             <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.11;0.125;0.17;0.21;1" dur="20s" begin="3s" repeatCount="indefinite"/>
           </text>
         </g>
 
         <text id="nameSweepText" x="0" y="137" fill="url(#nameEnergySweep)" font-size="50" font-weight="800" letter-spacing="1" opacity="0" filter="url(#cyanGlow)">
-          JEROME PRAKASH L
+          Jerome Prakash L
           <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.115;0.13;0.27;0.3;1" dur="20s" begin="3s" repeatCount="indefinite"/>
         </text>
 

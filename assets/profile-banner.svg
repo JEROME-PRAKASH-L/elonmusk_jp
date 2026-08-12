@@ -459,12 +459,12 @@
 
         <g font-size="50" font-weight="800" letter-spacing="1">
           <text id="nameDecodeRed" x="0" y="137" fill="#ff5262" opacity="0" textLength="570" lengthAdjust="spacingAndGlyphs">
-            J3R0M3 PR4K45H L
+            JEROME PRAKASH L
             <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.01;0.055;0.075;1" dur="20s" begin="3s" repeatCount="indefinite"/>
             <animate attributeName="x" values="0;-3;4;0;0" keyTimes="0;0.01;0.035;0.075;1" dur="20s" begin="3s" repeatCount="indefinite"/>
           </text>
           <text id="nameDecodeCyan" x="0" y="137" fill="#55f3ff" opacity="0" textLength="570" lengthAdjust="spacingAndGlyphs">
-            JER0ME PRAK45H L
+            JEROME PRAKASH L
             <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.055;0.07;0.11;0.13;1" dur="20s" begin="3s" repeatCount="indefinite"/>
             <animate attributeName="x" values="0;0;3;-2;0;0" keyTimes="0;0.055;0.075;0.1;0.13;1" dur="20s" begin="3s" repeatCount="indefinite"/>
           </text>
